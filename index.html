@@ -583,7 +583,7 @@
     </div>
     <button class="btn btn-secondary" id="myListToggleBtn">+ My List</button>
   </div>
-  <p style="color:rgba(255,255,255,0.7); line-height:1.6; margin-top:16px; font-size:0.85rem;">Demo title — sample video shown for preview purposes; not the licensed original content.</p>
+  <p id="titleDetailDesc" style="color:rgba(255,255,255,0.7); line-height:1.6; margin-top:16px; font-size:0.85rem; max-width:640px;"></p>
 </section>
 
 <section id="mylistSection" style="display:none; padding:110px 4vw 60px; max-width:1200px; margin:0 auto; min-height:60vh;">
@@ -593,7 +593,7 @@
 
 <section class="pricing" id="pricingSection">
   <h2 class="pricing-title brand-font">Plans For Everyone</h2>
-  <p class="pricing-sub">Cancel anytime. No hidden fees. (Demo checkout — no real charge is made.)</p>
+  <p class="pricing-sub">Cancel anytime. No hidden fees.</p>
   <div class="plans-grid">
     <div class="plan-card" data-plan="Mobile" data-price="200">
       <h3>Mobile</h3>
@@ -700,7 +700,7 @@
     <a href="#admin" id="adminLink">Admin</a>
     <a href="https://apps.apple.com/app/id6766668987" target="_blank" rel="noopener">Get the App (iOS)</a>
   </div>
-  <p>© 2026 Velara. All titles and artwork are fictional — demo streaming site.</p>
+  <p>© 2026 Velara. All rights reserved.</p>
 </footer>
 
 
@@ -1405,12 +1405,21 @@
     window.scrollTo(0, 0);
   }
 
-  // ===== Demo video catalogue (royalty-free / Creative Commons sample films) =====
-  // Real, legally free-to-stream public-domain feature films (verified on archive.org)
+  // ===== Video catalogue (public-domain feature films streamed from Internet Archive) =====
   var REAL_MOVIES = {
     'night-of-the-living-dead': 'https://archive.org/download/night_of_the_living_dead_dvd/Night.mp4',
     'his-girl-friday': 'https://archive.org/download/his_girl_friday/his_girl_friday_512kb.mp4',
     'plan-9-from-outer-space': 'https://archive.org/download/plan-9-from-outer-space/plan-9-from-outer-space.mp4'
+  };
+  var MOVIE_POSTERS = {
+    'night-of-the-living-dead': 'https://archive.org/services/img/night_of_the_living_dead_dvd',
+    'his-girl-friday': 'https://archive.org/services/img/his_girl_friday',
+    'plan-9-from-outer-space': 'https://archive.org/services/img/plan-9-from-outer-space'
+  };
+  var MOVIE_SYNOPSES = {
+    'night-of-the-living-dead': 'A group of strangers barricade themselves inside a rural farmhouse as the recently deceased rise to hunt the living.',
+    'his-girl-friday': 'A newspaper editor uses every trick in the book to keep his ace reporter ex-wife from remarrying, roping her into one last, breakneck story.',
+    'plan-9-from-outer-space': 'Aliens resurrect the dead as part of a covert plan to stop humanity from creating a doomsday weapon.'
   };
   var REAL_MOVIE_SLUGS = Object.keys(REAL_MOVIES);
   function videoForSlug(slug) {
@@ -1421,6 +1430,14 @@
     for (var i = 0; i < slug.length; i++) { hash = (hash * 31 + slug.charCodeAt(i)) >>> 0; }
     return REAL_MOVIES[REAL_MOVIE_SLUGS[hash % REAL_MOVIE_SLUGS.length]];
   }
+  function canonicalSlugFor(slug) {
+    if (REAL_MOVIES[slug]) return slug;
+    var hash = 0;
+    for (var i = 0; i < (slug || '').length; i++) { hash = (hash * 31 + slug.charCodeAt(i)) >>> 0; }
+    return REAL_MOVIE_SLUGS[hash % REAL_MOVIE_SLUGS.length];
+  }
+  function posterForSlug(slug) { return MOVIE_POSTERS[canonicalSlugFor(slug)] || ''; }
+  function synopsisForSlug(slug) { return MOVIE_SYNOPSES[canonicalSlugFor(slug)] || ''; }
 
   // ===== Session — now backed by real Firebase Auth (works across devices) =====
   function getSession() {
@@ -1812,13 +1829,14 @@
     detail.style.display = 'block';
     document.getElementById('titleDetailName').textContent = name;
     document.getElementById('titleDetailMeta').textContent = genre + ' • ' + year;
+    document.getElementById('titleDetailDesc').textContent = synopsisForSlug(slug);
 
     var session = getSession();
     var playerEl = document.getElementById('titleDetailPlayer');
     var sub = session ? await getSubscription(session.email) : null;
 
     if (session && sub) {
-      playerEl.innerHTML = '<video controls autoplay style="width:100%; height:100%;" src="' + videoForSlug(slug) + '"></video>';
+      playerEl.innerHTML = '<video controls playsinline preload="metadata" poster="' + posterForSlug(slug) + '" style="width:100%; height:100%; background:#000;" src="' + videoForSlug(slug) + '"></video>';
     } else {
       playerEl.innerHTML =
         '<div class="paywall-box">' +
