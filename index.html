@@ -339,7 +339,6 @@
       <a href="/films">Films</a>
       <a href="/new">New &amp; Popular</a>
       <a href="/mylist">My List</a>
-      <a href="#pricing">Pricing</a>
     </nav>
   </div>
   <div class="nav-right">
@@ -378,7 +377,7 @@
   </div>
 </section>
 
-<section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+<section class="pricing" id="pricing" aria-labelledby="pricing-heading" style="display:none;">
   <h2 id="pricing-heading" class="brand-font pricing-title">Plans For Every Screen</h2>
   <p class="pricing-sub">Cancel anytime. No hidden fees. Prices in PKR, billed monthly.</p>
   <div class="plans-grid">
@@ -520,6 +519,116 @@
   <p>© 2026 Velara. All titles and artwork are fictional — demo streaming site.</p>
 </footer>
 
+
+
+
+<div id="adminApp" style="display:none;">
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <span class="logo brand-font">VELARA</span>
+    <p class="sub">Admin Panel — authorized access only</p>
+    <form id="loginForm">
+      <label for="adminEmail">Admin Gmail</label>
+      <input type="email" id="adminEmail" placeholder="you@gmail.com" required />
+      <button type="submit">Sign In</button>
+      <p class="login-msg" id="loginMsg"></p>
+    </form>
+  </div>
+</div>
+
+<div class="dash" id="dash">
+  <header class="admin-nav">
+    <span class="logo brand-font">VELARA <span style="color:#fff;font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:600;">Admin</span></span>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span class="who">Signed in as <span id="whoEmail"></span></span>
+      <button class="logout" id="logoutBtn">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <h1 class="page-title">Dashboard</h1>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="label">Total Subscribers</div>
+        <div class="value" id="statTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Monthly Revenue (PKR)</div>
+        <div class="value accent" id="statRevenue">Rs. 0</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Most Popular Plan</div>
+        <div class="value" id="statTopPlan">—</div>
+      </div>
+    </div>
+
+    <h2 style="font-size:1.1rem;margin-bottom:12px;">Plans Breakdown</h2>
+    <div class="plan-breakdown" id="planBreakdown"></div>
+
+    <div class="adm-section-head">
+      <h2 style="font-size:1.1rem;">Subscribers</h2>
+      <button class="refresh-btn" id="refreshBtn">Refresh</button>
+    </div>
+    <div id="tableWrap"></div>
+
+    <div class="adm-section-head" style="margin-top:44px;">
+      <h2 style="font-size:1.1rem;">Content Library</h2>
+      <button class="refresh-btn" id="addTitleOpenBtn">+ Add New Title</button>
+    </div>
+    <div id="titlesWrap"></div>
+
+    <div class="adm-section-head" style="margin-top:44px;">
+      <h2 style="font-size:1.1rem;">Live Movie Data (TMDB)</h2>
+    </div>
+    <div class="stat-card" style="margin-bottom:30px;">
+      <div class="label" style="margin-bottom:12px;">
+        Connect a free <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener" style="color:var(--accent);">TMDB API key</a>
+        to pull real, legally-licensed trending movie posters &amp; info onto the homepage.
+      </div>
+      <form id="tmdbForm" style="display:flex; gap:10px; flex-wrap:wrap;">
+        <input type="text" id="tmdbKeyInput" placeholder="Paste your TMDB API key" style="flex:1; min-width:200px; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15); background:#0a0a0a; color:#fff; font-size:0.9rem;" />
+        <button type="submit" class="btn btn-primary" style="padding:11px 20px;">Save Key</button>
+      </form>
+      <p class="adm-msg" id="tmdbMsg"></p>
+    </div>
+  </main>
+</div>
+
+<div class="adm-overlay" id="titleModal">
+  <div class="adm-box">
+    <button class="adm-close" id="titleModalClose" aria-label="Close">✕</button>
+    <h3>Add New Title</h3>
+    <p class="adm-plan-line">Publishes instantly to the "New Releases" row</p>
+    <form id="titleForm">
+      <label for="tName">Title Name</label>
+      <input type="text" id="tName" placeholder="e.g. Hollow Signal" required />
+
+      <label for="tGenre">Genre</label>
+      <input type="text" id="tGenre" placeholder="e.g. Sci-Fi, Drama, Comedy" required />
+
+      <label for="tYear">Year</label>
+      <input type="number" id="tYear" placeholder="2026" min="1990" max="2030" required />
+
+      <label for="tColor">Thumbnail Color Theme</label>
+      <select id="tColor" style="width:100%;padding:11px 12px;border-radius:5px;border:1px solid rgba(255,255,255,0.15);background:#0a0a0a;color:#fff;font-size:0.9rem;margin-bottom:16px;">
+        <option value="linear-gradient(135deg,#c2410c,#7f1d1d)">Ember (orange/red)</option>
+        <option value="linear-gradient(135deg,#0891b2,#1e3a8a)">Frost (cyan/blue)</option>
+        <option value="linear-gradient(135deg,#059669,#134e4a)">Forest (green)</option>
+        <option value="linear-gradient(135deg,#7e22ce,#312e81)">Nebula (purple)</option>
+        <option value="linear-gradient(135deg,#ca8a04,#78350f)">Amber (gold/brown)</option>
+        <option value="linear-gradient(135deg,#a21caf,#3b0764)">Orchid (magenta)</option>
+        <option value="linear-gradient(135deg,#57534e,#1c1917)">Slate (grey/black)</option>
+      </select>
+
+      <div class="adm-actions">
+        <button type="submit" class="btn btn-primary" style="justify-content:center;">Publish Title</button>
+      </div>
+      <p class="adm-msg" id="titleModalMsg"></p>
+    </form>
+  </div>
+</div>
+</div>
 <script>
   // ===== Storage polyfill: window.storage only exists inside Claude.ai artifacts.
   // On a real deployed site (like Vercel) it's undefined, so we fall back to
@@ -1014,7 +1123,7 @@
     document.getElementById('adminApp').style.display = 'none';
     document.querySelector('header.site-nav').style.display = 'flex';
     document.querySelector('.hero').style.display = 'flex';
-    document.getElementById('pricing').style.display = 'block';
+    document.getElementById('pricing').style.display = 'none';
     document.querySelector('main').style.display = 'block';
     document.querySelector('footer').style.display = 'block';
   }
@@ -1025,114 +1134,5 @@
   window.addEventListener('hashchange', routeCheck);
   routeCheck();
 </script>
-
-
-<div id="adminApp" style="display:none;">
-<div class="login-wrap" id="loginWrap">
-  <div class="login-box">
-    <span class="logo brand-font">VELARA</span>
-    <p class="sub">Admin Panel — authorized access only</p>
-    <form id="loginForm">
-      <label for="adminEmail">Admin Gmail</label>
-      <input type="email" id="adminEmail" placeholder="you@gmail.com" required />
-      <button type="submit">Sign In</button>
-      <p class="login-msg" id="loginMsg"></p>
-    </form>
-  </div>
-</div>
-
-<div class="dash" id="dash">
-  <header class="admin-nav">
-    <span class="logo brand-font">VELARA <span style="color:#fff;font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:600;">Admin</span></span>
-    <div style="display:flex;align-items:center;gap:16px;">
-      <span class="who">Signed in as <span id="whoEmail"></span></span>
-      <button class="logout" id="logoutBtn">Log out</button>
-    </div>
-  </header>
-
-  <main class="admin-main">
-    <h1 class="page-title">Dashboard</h1>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="label">Total Subscribers</div>
-        <div class="value" id="statTotal">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Monthly Revenue (PKR)</div>
-        <div class="value accent" id="statRevenue">Rs. 0</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Most Popular Plan</div>
-        <div class="value" id="statTopPlan">—</div>
-      </div>
-    </div>
-
-    <h2 style="font-size:1.1rem;margin-bottom:12px;">Plans Breakdown</h2>
-    <div class="plan-breakdown" id="planBreakdown"></div>
-
-    <div class="adm-section-head">
-      <h2 style="font-size:1.1rem;">Subscribers</h2>
-      <button class="refresh-btn" id="refreshBtn">Refresh</button>
-    </div>
-    <div id="tableWrap"></div>
-
-    <div class="adm-section-head" style="margin-top:44px;">
-      <h2 style="font-size:1.1rem;">Content Library</h2>
-      <button class="refresh-btn" id="addTitleOpenBtn">+ Add New Title</button>
-    </div>
-    <div id="titlesWrap"></div>
-
-    <div class="adm-section-head" style="margin-top:44px;">
-      <h2 style="font-size:1.1rem;">Live Movie Data (TMDB)</h2>
-    </div>
-    <div class="stat-card" style="margin-bottom:30px;">
-      <div class="label" style="margin-bottom:12px;">
-        Connect a free <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener" style="color:var(--accent);">TMDB API key</a>
-        to pull real, legally-licensed trending movie posters &amp; info onto the homepage.
-      </div>
-      <form id="tmdbForm" style="display:flex; gap:10px; flex-wrap:wrap;">
-        <input type="text" id="tmdbKeyInput" placeholder="Paste your TMDB API key" style="flex:1; min-width:200px; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15); background:#0a0a0a; color:#fff; font-size:0.9rem;" />
-        <button type="submit" class="btn btn-primary" style="padding:11px 20px;">Save Key</button>
-      </form>
-      <p class="adm-msg" id="tmdbMsg"></p>
-    </div>
-  </main>
-</div>
-
-<div class="adm-overlay" id="titleModal">
-  <div class="adm-box">
-    <button class="adm-close" id="titleModalClose" aria-label="Close">✕</button>
-    <h3>Add New Title</h3>
-    <p class="adm-plan-line">Publishes instantly to the "New Releases" row</p>
-    <form id="titleForm">
-      <label for="tName">Title Name</label>
-      <input type="text" id="tName" placeholder="e.g. Hollow Signal" required />
-
-      <label for="tGenre">Genre</label>
-      <input type="text" id="tGenre" placeholder="e.g. Sci-Fi, Drama, Comedy" required />
-
-      <label for="tYear">Year</label>
-      <input type="number" id="tYear" placeholder="2026" min="1990" max="2030" required />
-
-      <label for="tColor">Thumbnail Color Theme</label>
-      <select id="tColor" style="width:100%;padding:11px 12px;border-radius:5px;border:1px solid rgba(255,255,255,0.15);background:#0a0a0a;color:#fff;font-size:0.9rem;margin-bottom:16px;">
-        <option value="linear-gradient(135deg,#c2410c,#7f1d1d)">Ember (orange/red)</option>
-        <option value="linear-gradient(135deg,#0891b2,#1e3a8a)">Frost (cyan/blue)</option>
-        <option value="linear-gradient(135deg,#059669,#134e4a)">Forest (green)</option>
-        <option value="linear-gradient(135deg,#7e22ce,#312e81)">Nebula (purple)</option>
-        <option value="linear-gradient(135deg,#ca8a04,#78350f)">Amber (gold/brown)</option>
-        <option value="linear-gradient(135deg,#a21caf,#3b0764)">Orchid (magenta)</option>
-        <option value="linear-gradient(135deg,#57534e,#1c1917)">Slate (grey/black)</option>
-      </select>
-
-      <div class="adm-actions">
-        <button type="submit" class="btn btn-primary" style="justify-content:center;">Publish Title</button>
-      </div>
-      <p class="adm-msg" id="titleModalMsg"></p>
-    </form>
-  </div>
-</div>
-</div>
 </body>
 </html>
