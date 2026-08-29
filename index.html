@@ -347,6 +347,29 @@
   .title-card .del-btn:hover { background:var(--accent); }
 
 </style>
+
+<!-- ===== Firebase (Auth + Firestore) =====
+     1. Create a free project at https://console.firebase.google.com
+     2. Enable Authentication → Sign-in method → Email/Password
+     3. Create a Firestore Database (start in production mode)
+     4. Project settings → General → scroll to "Your apps" → Web app → copy the config object below
+-->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "PASTE_YOUR_API_KEY_HERE",
+    authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
+    projectId: "PASTE_YOUR_PROJECT_ID",
+    storageBucket: "PASTE_YOUR_PROJECT.appspot.com",
+    messagingSenderId: "PASTE_YOUR_SENDER_ID",
+    appId: "PASTE_YOUR_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+  var auth = firebase.auth();
+  var db = firebase.firestore();
+</script>
 </head>
 <body>
 
@@ -394,104 +417,104 @@
   <section class="row-section" aria-labelledby="row-trending">
     <h2 id="row-trending">Trending Now</h2>
     <div class="row-track" id="trendingNowTrack">
-      <a class="card" aria-label="Ashfall Protocol poster thumbnail" href="/title/ashfall-protocol" style="background:linear-gradient(135deg,#c2410c,#7f1d1d);"><h3>Ashfall Protocol<br><span>Action • 2026</span></h3></a>
-      <a class="card" aria-label="Quiet Hours poster thumbnail" href="/title/quiet-hours" style="background:linear-gradient(135deg,#475569,#0f172a);"><h3>Quiet Hours<br><span>Drama • 2025</span></h3></a>
-      <a class="card" aria-label="Nightglass poster thumbnail" href="/title/nightglass" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Nightglass<br><span>Sci-Fi • 2026</span></h3></a>
-      <a class="card" aria-label="Paper Kingdoms poster thumbnail" href="/title/paper-kingdoms" style="background:linear-gradient(135deg,#059669,#134e4a);"><h3>Paper Kingdoms<br><span>Fantasy • 2024</span></h3></a>
-      <a class="card" aria-label="The Long Static poster thumbnail" href="/title/the-long-static" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>The Long Static<br><span>Thriller • 2025</span></h3></a>
-      <a class="card" aria-label="Salt &amp; Iron poster thumbnail" href="/title/salt-and-iron" style="background:linear-gradient(135deg,#d97706,#7c2d12);"><h3>Salt &amp; Iron<br><span>Drama • 2026</span></h3></a>
-      <a class="card" aria-label="Wireframe Hearts poster thumbnail" href="/title/wireframe-hearts" style="background:linear-gradient(135deg,#0ea5e9,#1e1b4b);"><h3>Wireframe Hearts<br><span>Romance • 2026</span></h3></a>
-      <a class="card" aria-label="The Ember Line poster thumbnail" href="/title/the-ember-line" style="background:linear-gradient(135deg,#dc2626,#450a0a);"><h3>The Ember Line<br><span>Thriller • 2025</span></h3></a>
-      <a class="card" aria-label="Hollow Signal poster thumbnail" href="/title/hollow-signal" style="background:linear-gradient(135deg,#4c1d95,#020617);"><h3>Hollow Signal<br><span>Sci-Fi • 2026</span></h3></a>
-      <a class="card" aria-label="Last Exit Denver poster thumbnail" href="/title/last-exit-denver" style="background:linear-gradient(135deg,#b45309,#1c1917);"><h3>Last Exit Denver<br><span>Drama • 2024</span></h3></a>
-      <a class="card" aria-label="Glass Ceiling poster thumbnail" href="/title/glass-ceiling" style="background:linear-gradient(135deg,#0284c7,#0c4a6e);"><h3>Glass Ceiling<br><span>Drama • 2025</span></h3></a>
-      <a class="card" aria-label="Midnight Ferry poster thumbnail" href="/title/midnight-ferry" style="background:linear-gradient(135deg,#1e40af,#020617);"><h3>Midnight Ferry<br><span>Thriller • 2026</span></h3></a>
-      <a class="card" aria-label="Copper Season poster thumbnail" href="/title/copper-season" style="background:linear-gradient(135deg,#c2410c,#431407);"><h3>Copper Season<br><span>Action • 2025</span></h3></a>
-      <a class="card" aria-label="Faultline poster thumbnail" href="/title/faultline" style="background:linear-gradient(135deg,#7c3aed,#1e1b4b);"><h3>Faultline<br><span>Sci-Fi • 2024</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
     </div>
   </section>
 
   <section class="row-section" aria-labelledby="row-related">
     <h2 id="row-related">Because You Watched Nightglass</h2>
     <div class="row-track" id="becauseWatchedTrack">
-      <a class="card" aria-label="Vantablack poster thumbnail" href="/title/vantablack" style="background:linear-gradient(135deg,#4338ca,#0f172a);"><h3>Vantablack<br><span>Sci-Fi • 2025</span></h3></a>
-      <a class="card" aria-label="Echo Chamber poster thumbnail" href="/title/echo-chamber" style="background:linear-gradient(135deg,#be123c,#7f1d1d);"><h3>Echo Chamber<br><span>Thriller • 2024</span></h3></a>
-      <a class="card" aria-label="Ninth Signal poster thumbnail" href="/title/ninth-signal" style="background:linear-gradient(135deg,#1d4ed8,#164e63);"><h3>Ninth Signal<br><span>Sci-Fi • 2026</span></h3></a>
-      <a class="card" aria-label="Halflight poster thumbnail" href="/title/halflight" style="background:linear-gradient(135deg,#ca8a04,#78350f);"><h3>Halflight<br><span>Drama • 2025</span></h3></a>
-      <a class="card" aria-label="Cartography of Ash poster thumbnail" href="/title/cartography-of-ash" style="background:linear-gradient(135deg,#b91c1c,#7c2d12);"><h3>Cartography of Ash<br><span>Action • 2023</span></h3></a>
-      <a class="card" aria-label="Static Bloom poster thumbnail" href="/title/static-bloom" style="background:linear-gradient(135deg,#0d9488,#065f46);"><h3>Static Bloom<br><span>Sci-Fi • 2026</span></h3></a>
-      <a class="card" aria-label="Rooftop Season poster thumbnail" href="/title/rooftop-season" style="background:linear-gradient(135deg,#f97316,#7c2d12);"><h3>Rooftop Season<br><span>Drama • 2025</span></h3></a>
-      <a class="card" aria-label="Blackout City poster thumbnail" href="/title/blackout-city" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Blackout City<br><span>Crime • 2026</span></h3></a>
-      <a class="card" aria-label="Paper Lanterns poster thumbnail" href="/title/paper-lanterns" style="background:linear-gradient(135deg,#f59e0b,#78350f);"><h3>Paper Lanterns<br><span>Fantasy • 2025</span></h3></a>
-      <a class="card" aria-label="Deep Cut poster thumbnail" href="/title/deep-cut" style="background:linear-gradient(135deg,#0f766e,#022c22);"><h3>Deep Cut<br><span>Thriller • 2026</span></h3></a>
-      <a class="card" aria-label="The Cartographer poster thumbnail" href="/title/the-cartographer" style="background:linear-gradient(135deg,#7c2d12,#292524);"><h3>The Cartographer<br><span>Adventure • 2025</span></h3></a>
-      <a class="card" aria-label="Signal Loss poster thumbnail" href="/title/signal-loss" style="background:linear-gradient(135deg,#312e81,#020617);"><h3>Signal Loss<br><span>Sci-Fi • 2024</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
     </div>
   </section>
 
   <section class="row-section" aria-labelledby="row-originals">
     <h2 id="row-originals">Velara Originals</h2>
     <div class="row-track" id="originalsTrack">
-      <a class="card" aria-label="Marrow Street poster thumbnail" href="/title/marrow-street" style="background:linear-gradient(135deg,#57534e,#1c1917);"><h3>Marrow Street<br><span>Crime • 2025</span></h3></a>
-      <a class="card" aria-label="The Understudy poster thumbnail" href="/title/the-understudy" style="background:linear-gradient(135deg,#a21caf,#3b0764);"><h3>The Understudy<br><span>Drama • 2026</span></h3></a>
-      <a class="card" aria-label="Low Tide poster thumbnail" href="/title/low-tide" style="background:linear-gradient(135deg,#0369a1,#1e3a8a);"><h3>Low Tide<br><span>Mystery • 2024</span></h3></a>
-      <a class="card" aria-label="Foxglove poster thumbnail" href="/title/foxglove" style="background:linear-gradient(135deg,#65a30d,#14532d);"><h3>Foxglove<br><span>Fantasy • 2025</span></h3></a>
-      <a class="card" aria-label="Iron Season poster thumbnail" href="/title/iron-season" style="background:linear-gradient(135deg,#991b1b,#000);"><h3>Iron Season<br><span>Action • 2026</span></h3></a>
-      <a class="card" aria-label="Antechamber poster thumbnail" href="/title/antechamber" style="background:linear-gradient(135deg,#6d28d9,#000);"><h3>Antechamber<br><span>Horror • 2025</span></h3></a>
-      <a class="card" aria-label="The Understory poster thumbnail" href="/title/the-understory" style="background:linear-gradient(135deg,#166534,#022c22);"><h3>The Understory<br><span>Drama • 2026</span></h3></a>
-      <a class="card" aria-label="Redshift poster thumbnail" href="/title/redshift" style="background:linear-gradient(135deg,#b91c1c,#1e1b4b);"><h3>Redshift<br><span>Sci-Fi • 2025</span></h3></a>
-      <a class="card" aria-label="Borrowed Time poster thumbnail" href="/title/borrowed-time" style="background:linear-gradient(135deg,#9333ea,#312e81);"><h3>Borrowed Time<br><span>Drama • 2026</span></h3></a>
-      <a class="card" aria-label="Nine Lives of Static poster thumbnail" href="/title/nine-lives-of-static" style="background:linear-gradient(135deg,#059669,#022c22);"><h3>Nine Lives of Static<br><span>Mystery • 2025</span></h3></a>
-      <a class="card" aria-label="The Last Ledger poster thumbnail" href="/title/the-last-ledger" style="background:linear-gradient(135deg,#78350f,#1c1917);"><h3>The Last Ledger<br><span>Crime • 2026</span></h3></a>
-      <a class="card" aria-label="Northbound poster thumbnail" href="/title/northbound" style="background:linear-gradient(135deg,#0369a1,#082f49);"><h3>Northbound<br><span>Drama • 2024</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
     </div>
   </section>
 
   <section class="row-section" aria-labelledby="row-comedy">
     <h2 id="row-comedy">Comedies</h2>
     <div class="row-track" id="comedyTrack">
-      <a class="card" aria-label="Bad Directions poster thumbnail" href="/title/bad-directions" style="background:linear-gradient(135deg,#eab308,#c2410c);"><h3>Bad Directions<br><span>Comedy • 2024</span></h3></a>
-      <a class="card" aria-label="Full Refund poster thumbnail" href="/title/full-refund" style="background:linear-gradient(135deg,#ec4899,#9f1239);"><h3>Full Refund<br><span>Comedy • 2025</span></h3></a>
-      <a class="card" aria-label="Overqualified poster thumbnail" href="/title/overqualified" style="background:linear-gradient(135deg,#84cc16,#166534);"><h3>Overqualified<br><span>Comedy • 2026</span></h3></a>
-      <a class="card" aria-label="The Group Chat poster thumbnail" href="/title/the-group-chat" style="background:linear-gradient(135deg,#06b6d4,#115e59);"><h3>The Group Chat<br><span>Comedy • 2025</span></h3></a>
-      <a class="card" aria-label="Minor Setbacks poster thumbnail" href="/title/minor-setbacks" style="background:linear-gradient(135deg,#f59e0b,#991b1b);"><h3>Minor Setbacks<br><span>Comedy • 2023</span></h3></a>
-      <a class="card" aria-label="Petty Theft poster thumbnail" href="/title/petty-theft" style="background:linear-gradient(135deg,#a855f7,#701a75);"><h3>Petty Theft<br><span>Comedy • 2026</span></h3></a>
-      <a class="card" aria-label="Wedding Crashers Anonymous poster thumbnail" href="/title/wedding-crashers-anonymous" style="background:linear-gradient(135deg,#f472b6,#831843);"><h3>Wedding Crashers Anonymous<br><span>Comedy • 2025</span></h3></a>
-      <a class="card" aria-label="Return to Sender poster thumbnail" href="/title/return-to-sender" style="background:linear-gradient(135deg,#22c55e,#14532d);"><h3>Return to Sender<br><span>Comedy • 2026</span></h3></a>
-      <a class="card" aria-label="Rent Control poster thumbnail" href="/title/rent-control" style="background:linear-gradient(135deg,#f59e0b,#7c2d12);"><h3>Rent Control<br><span>Comedy • 2025</span></h3></a>
-      <a class="card" aria-label="Second Opinion poster thumbnail" href="/title/second-opinion" style="background:linear-gradient(135deg,#0891b2,#083344);"><h3>Second Opinion<br><span>Comedy • 2024</span></h3></a>
-      <a class="card" aria-label="Out of Office poster thumbnail" href="/title/out-of-office" style="background:linear-gradient(135deg,#db2777,#500724);"><h3>Out of Office<br><span>Comedy • 2026</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
     </div>
   </section>
 
   <section class="row-section" aria-labelledby="row-action">
     <h2 id="row-action">Action &amp; Adventure</h2>
     <div class="row-track" id="actionTrack">
-      <a class="card" aria-label="Ironclad poster thumbnail" href="/title/ironclad" style="background:linear-gradient(135deg,#991b1b,#1c1917);"><h3>Ironclad<br><span>Action • 2026</span></h3></a>
-      <a class="card" aria-label="The Last Convoy poster thumbnail" href="/title/the-last-convoy" style="background:linear-gradient(135deg,#b45309,#292524);"><h3>The Last Convoy<br><span>Action • 2025</span></h3></a>
-      <a class="card" aria-label="Skyline Breach poster thumbnail" href="/title/skyline-breach" style="background:linear-gradient(135deg,#0369a1,#020617);"><h3>Skyline Breach<br><span>Action • 2026</span></h3></a>
-      <a class="card" aria-label="Rogue Harbor poster thumbnail" href="/title/rogue-harbor" style="background:linear-gradient(135deg,#166534,#052e16);"><h3>Rogue Harbor<br><span>Adventure • 2024</span></h3></a>
-      <a class="card" aria-label="Zero Hour poster thumbnail" href="/title/zero-hour" style="background:linear-gradient(135deg,#7c2d12,#000);"><h3>Zero Hour<br><span>Action • 2025</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
     </div>
   </section>
 
   <section class="row-section" aria-labelledby="row-horror">
     <h2 id="row-horror">Horror</h2>
     <div class="row-track" id="horrorTrack">
-      <a class="card" aria-label="The Hollow House poster thumbnail" href="/title/the-hollow-house" style="background:linear-gradient(135deg,#3f0d0d,#000);"><h3>The Hollow House<br><span>Horror • 2025</span></h3></a>
-      <a class="card" aria-label="Night Tenant poster thumbnail" href="/title/night-tenant" style="background:linear-gradient(135deg,#1e1b4b,#000);"><h3>Night Tenant<br><span>Horror • 2026</span></h3></a>
-      <a class="card" aria-label="Wither poster thumbnail" href="/title/wither" style="background:linear-gradient(135deg,#166534,#000);"><h3>Wither<br><span>Horror • 2024</span></h3></a>
-      <a class="card" aria-label="Static Room 4 poster thumbnail" href="/title/static-room-4" style="background:linear-gradient(135deg,#450a0a,#000);"><h3>Static Room 4<br><span>Horror • 2025</span></h3></a>
-      <a class="card" aria-label="The Widow's Signal poster thumbnail" href="/title/the-widows-signal" style="background:linear-gradient(135deg,#312e81,#000);"><h3>The Widow's Signal<br><span>Horror • 2026</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
     </div>
   </section>
 
   <section class="row-section" aria-labelledby="row-upcoming">
     <h2 id="row-upcoming">Upcoming</h2>
     <div class="row-track" id="upcomingTrack">
-      <a class="card" aria-label="Departure Gate poster thumbnail" href="/title/departure-gate" style="background:linear-gradient(135deg,#0ea5e9,#082f49);"><h3>Departure Gate<br><span>Thriller • 2027</span></h3></a>
-      <a class="card" aria-label="The Quiet War poster thumbnail" href="/title/the-quiet-war" style="background:linear-gradient(135deg,#57534e,#000);"><h3>The Quiet War<br><span>Drama • 2027</span></h3></a>
-      <a class="card" aria-label="Halcyon poster thumbnail" href="/title/halcyon" style="background:linear-gradient(135deg,#9333ea,#1e1b4b);"><h3>Halcyon<br><span>Sci-Fi • 2027</span></h3></a>
+      <a class="card" aria-label="Plan 9 From Outer Space poster thumbnail" href="/title/plan-9-from-outer-space" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Plan 9 From Outer Space<br><span>Sci-Fi • 1959</span></h3></a>
+      <a class="card" aria-label="Night of the Living Dead poster thumbnail" href="/title/night-of-the-living-dead" style="background:linear-gradient(135deg,#1e293b,#000);"><h3>Night of the Living Dead<br><span>Horror • 1968</span></h3></a>
+      <a class="card" aria-label="His Girl Friday poster thumbnail" href="/title/his-girl-friday" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>His Girl Friday<br><span>Comedy • 1940</span></h3></a>
     </div>
   </section>
 </main>
@@ -556,6 +579,7 @@
     <a href="/faq">FAQ</a>
     <a href="/careers">Careers</a>
     <a href="#admin" id="adminLink">Admin</a>
+    <a href="https://apps.apple.com/app/id6766668987" target="_blank" rel="noopener">Get the App (iOS)</a>
   </div>
   <p>© 2026 Velara. All titles and artwork are fictional — demo streaming site.</p>
 </footer>
@@ -734,61 +758,51 @@
     <h3 id="checkoutPlanName">Subscribe</h3>
     <p class="modal-plan-line" id="checkoutPlanLine"></p>
     <form id="checkoutForm">
-      <label for="ccName">Name on Card</label>
-      <input type="text" id="ccName" required />
-      <label for="ccNumber">Card Number</label>
-      <input type="text" id="ccNumber" placeholder="4242 4242 4242 4242" maxlength="19" required />
-      <div style="display:flex; gap:10px;">
-        <div style="flex:1;">
-          <label for="ccExpiry">Expiry (MM/YY)</label>
-          <input type="text" id="ccExpiry" placeholder="MM/YY" maxlength="5" required />
-        </div>
-        <div style="flex:1;">
-          <label for="ccCvv">CVV</label>
-          <input type="text" id="ccCvv" placeholder="123" maxlength="4" required />
-        </div>
-      </div>
+      <p style="color:rgba(255,255,255,0.65); font-size:0.88rem; margin-bottom:20px; line-height:1.5;">
+        You'll be redirected to Stripe's secure checkout page to enter your card details safely. Velara never sees or stores your card number.
+      </p>
       <div class="modal-actions">
-        <button type="submit" class="btn btn-primary">Pay &amp; Subscribe</button>
+        <button type="submit" class="btn btn-primary">Continue to Secure Checkout</button>
       </div>
       <p class="modal-msg" id="checkoutMsg"></p>
-      <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:8px;">Demo checkout — card details are validated for format only and are never stored or sent anywhere. No real charge is made.</p>
+      <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:8px;">Test mode — use Stripe test card 4242 4242 4242 4242, any future expiry, any CVC. No real charge is made.</p>
     </form>
   </div>
 </div>
 
 <script>
   // ===== Storage polyfill: window.storage only exists inside Claude.ai artifacts.
-  // On a real deployed site (like Vercel) it's undefined, so we fall back to
-  // localStorage with the same get/set/delete/list interface. =====
+  // On a real deployed site (like Vercel), we back the same get/set/delete/list
+  // interface with Firestore so admin-added titles, TMDB key, etc. are shared
+  // across every visitor's device (not stuck on just one browser). =====
   if (!window.storage) {
+    var KV_COLLECTION = 'kv_store';
+    function kvDocId(key) { return key.replace(/\//g, '__'); } // Firestore doc IDs can't contain '/'
     window.storage = {
-      _key: function (key, shared) { return 'velara:' + (shared ? 'shared:' : 'local:') + key; },
-      get: async function (key, shared) {
-        var raw = localStorage.getItem(this._key(key, shared));
-        if (raw === null) return null;
-        return { key: key, value: raw, shared: !!shared };
+      get: async function (key) {
+        var doc = await db.collection(KV_COLLECTION).doc(kvDocId(key)).get();
+        if (!doc.exists) throw new Error('Key not found');
+        return { key: key, value: doc.data().value, shared: true };
       },
-      set: async function (key, value, shared) {
-        localStorage.setItem(this._key(key, shared), value);
-        return { key: key, value: value, shared: !!shared };
+      set: async function (key, value) {
+        await db.collection(KV_COLLECTION).doc(kvDocId(key)).set({ value: value });
+        return { key: key, value: value, shared: true };
       },
-      delete: async function (key, shared) {
-        var k = this._key(key, shared);
-        var existed = localStorage.getItem(k) !== null;
-        localStorage.removeItem(k);
-        return { key: key, deleted: existed, shared: !!shared };
+      delete: async function (key) {
+        var ref = db.collection(KV_COLLECTION).doc(kvDocId(key));
+        var doc = await ref.get();
+        var existed = doc.exists;
+        await ref.delete();
+        return { key: key, deleted: existed, shared: true };
       },
-      list: async function (prefix, shared) {
+      list: async function (prefix) {
+        var snap = await db.collection(KV_COLLECTION).get();
         var out = [];
-        var searchPrefix = 'velara:' + (shared ? 'shared:' : 'local:') + (prefix || '');
-        for (var i = 0; i < localStorage.length; i++) {
-          var k = localStorage.key(i);
-          if (k.indexOf(searchPrefix) === 0) {
-            out.push(k.slice(('velara:' + (shared ? 'shared:' : 'local:')).length));
-          }
-        }
-        return { keys: out, prefix: prefix, shared: !!shared };
+        snap.forEach(function (d) {
+          var k = d.id.replace(/__/g, '/');
+          if (!prefix || k.indexOf(prefix) === 0) out.push(k);
+        });
+        return { keys: out, prefix: prefix, shared: true };
       }
     };
   }
@@ -1218,70 +1232,65 @@
   }
 
   // ===== Demo video catalogue (royalty-free / Creative Commons sample films) =====
-  var DEMO_VIDEOS = [
-    'https://developer.mozilla.org/shared-assets/videos/flower.mp4',
-    'https://developer.mozilla.org/shared-assets/videos/friday.mp4',
-    'https://developer.mozilla.org/shared-assets/videos/sintel-short.mp4',
-    'https://developer.mozilla.org/shared-assets/videos/tears-of-steel-battle-clip-medium.mp4',
-    'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-    'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm'
-  ];
+  // Real, legally free-to-stream public-domain feature films (verified on archive.org)
+  var REAL_MOVIES = {
+    'night-of-the-living-dead': 'https://archive.org/download/night_of_the_living_dead_dvd/Night.mp4',
+    'his-girl-friday': 'https://archive.org/download/his_girl_friday/his_girl_friday_512kb.mp4',
+    'plan-9-from-outer-space': 'https://archive.org/download/plan-9-from-outer-space/plan-9-from-outer-space.mp4'
+  };
+  var REAL_MOVIE_SLUGS = Object.keys(REAL_MOVIES);
   function videoForSlug(slug) {
     slug = slug || 'default';
+    if (REAL_MOVIES[slug]) return REAL_MOVIES[slug];
+    // Fallback: deterministically map any unrecognized slug to one of the real movies
     var hash = 0;
     for (var i = 0; i < slug.length; i++) { hash = (hash * 31 + slug.charCodeAt(i)) >>> 0; }
-    return DEMO_VIDEOS[hash % DEMO_VIDEOS.length];
+    return REAL_MOVIES[REAL_MOVIE_SLUGS[hash % REAL_MOVIE_SLUGS.length]];
   }
 
-  // ===== Session (device-local; not shared storage) =====
+  // ===== Session — now backed by real Firebase Auth (works across devices) =====
   function getSession() {
-    try { return JSON.parse(localStorage.getItem('velara-session') || 'null'); } catch (e) { return null; }
+    var u = auth.currentUser;
+    if (!u) return null;
+    return { email: u.email, name: u.displayName || u.email };
   }
-  function setSession(email, name) {
-    localStorage.setItem('velara-session', JSON.stringify({ email: email, name: name || email }));
-  }
-  function clearSession() { localStorage.removeItem('velara-session'); }
+  // setSession/clearSession no longer needed — Firebase Auth manages this automatically.
+  function clearSession() { auth.signOut(); }
 
-  // ===== User accounts (shared storage acts as the "database") =====
-  async function findUser(email) {
-    try {
-      var r = await window.storage.get('user:' + email, true);
-      return r && r.value ? JSON.parse(r.value) : null;
-    } catch (e) { return null; }
-  }
+  // ===== User accounts — now real Firebase Authentication =====
   async function createUser(name, email, password) {
-    var existing = await findUser(email);
-    if (existing) throw new Error('An account with this email already exists.');
-    var record = { name: name, email: email, password: password, createdAt: new Date().toISOString() };
-    await window.storage.set('user:' + email, JSON.stringify(record), true);
-    var idx = [];
-    try { var ir = await window.storage.get('users-index', true); if (ir && ir.value) idx = JSON.parse(ir.value); } catch (e) {}
-    if (idx.indexOf(email) === -1) idx.push(email);
-    await window.storage.set('users-index', JSON.stringify(idx), true);
-    return record;
+    var cred = await auth.createUserWithEmailAndPassword(email, password);
+    await cred.user.updateProfile({ displayName: name });
+    // Store a matching profile doc in Firestore too (useful for admin panel listing)
+    await db.collection('users').doc(email).set({
+      name: name, email: email, createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    return { name: name, email: email };
+  }
+  async function loginUser(email, password) {
+    var cred = await auth.signInWithEmailAndPassword(email, password);
+    return { name: cred.user.displayName || cred.user.email, email: cred.user.email };
   }
 
-  // ===== Subscription state (reuses the same subscriber:* records the admin panel manages) =====
+  // ===== Subscription state — now stored in Firestore (shared, real database) =====
   async function getSubscription(email) {
     try {
-      var r = await window.storage.get('subscriber:' + email, true);
-      return r && r.value ? JSON.parse(r.value) : null;
+      var doc = await db.collection('subscribers').doc(email).get();
+      return doc.exists ? doc.data() : null;
     } catch (e) { return null; }
   }
   async function saveSubscription(email, plan, price) {
-    var record = { email: email, plan: plan, price: price, subscribedAt: new Date().toISOString() };
-    await window.storage.set('subscriber:' + email, JSON.stringify(record), true);
-    var idx = [];
-    try { var ir = await window.storage.get('subscriber-index', true); if (ir && ir.value) idx = JSON.parse(ir.value); } catch (e) {}
-    if (idx.indexOf(email) === -1) idx.push(email);
-    await window.storage.set('subscriber-index', JSON.stringify(idx), true);
+    await db.collection('subscribers').doc(email).set({
+      email: email, plan: plan, price: price,
+      subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
   }
 
-  // ===== My List =====
+  // ===== My List — now stored in Firestore =====
   async function getMyList(email) {
     try {
-      var r = await window.storage.get('mylist:' + email, true);
-      return r && r.value ? JSON.parse(r.value) : [];
+      var doc = await db.collection('mylist').doc(email).get();
+      return doc.exists ? (doc.data().items || []) : [];
     } catch (e) { return []; }
   }
   async function toggleMyList(email, item) {
@@ -1289,7 +1298,7 @@
     var i = list.findIndex(function (x) { return x.slug === item.slug; });
     var nowIn;
     if (i === -1) { list.push(item); nowIn = true; } else { list.splice(i, 1); nowIn = false; }
-    await window.storage.set('mylist:' + email, JSON.stringify(list), true);
+    await db.collection('mylist').doc(email).set({ items: list });
     return nowIn;
   }
 
@@ -1349,14 +1358,12 @@
     var password = document.getElementById('loginPassword').value;
     msg.textContent = 'Signing in...'; msg.className = 'modal-msg';
     try {
-      var user = await findUser(email);
-      if (!user || user.password !== password) throw new Error('Invalid email or password.');
-      setSession(user.email, user.name);
+      await loginUser(email, password);
       await renderAuthArea();
       authModal.classList.remove('open');
       await afterAuthSuccess();
     } catch (err) {
-      msg.textContent = err.message; msg.className = 'modal-msg error';
+      msg.textContent = friendlyFirebaseError(err); msg.className = 'modal-msg error';
     }
   });
 
@@ -1369,14 +1376,22 @@
     msg.textContent = 'Creating account...'; msg.className = 'modal-msg';
     try {
       await createUser(name, email, password);
-      setSession(email, name);
       await renderAuthArea();
       authModal.classList.remove('open');
       await afterAuthSuccess();
     } catch (err) {
-      msg.textContent = err.message; msg.className = 'modal-msg error';
+      msg.textContent = friendlyFirebaseError(err); msg.className = 'modal-msg error';
     }
   });
+
+  function friendlyFirebaseError(err) {
+    var code = err && err.code;
+    if (code === 'auth/email-already-in-use') return 'An account with this email already exists.';
+    if (code === 'auth/invalid-email') return 'Enter a valid email address.';
+    if (code === 'auth/weak-password') return 'Password should be at least 6 characters.';
+    if (code === 'auth/user-not-found' || code === 'auth/wrong-password' || code === 'auth/invalid-credential') return 'Invalid email or password.';
+    return (err && err.message) || 'Something went wrong. Please try again.';
+  }
 
   async function afterAuthSuccess() {
     if (pendingPlan) {
@@ -1399,40 +1414,59 @@
   document.getElementById('checkoutModalClose').addEventListener('click', function () { checkoutModal.classList.remove('open'); });
   checkoutModal.addEventListener('click', function (e) { if (e.target === checkoutModal) checkoutModal.classList.remove('open'); });
 
-  document.getElementById('ccNumber').addEventListener('input', function (e) {
-    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
-  });
-  document.getElementById('ccExpiry').addEventListener('input', function (e) {
-    var v = e.target.value.replace(/\D/g, '').slice(0, 4);
-    if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
-    e.target.value = v;
-  });
-
   document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     var msg = document.getElementById('checkoutMsg');
-    var cardDigits = document.getElementById('ccNumber').value.replace(/\s/g, '');
-    var expiry = document.getElementById('ccExpiry').value;
-    var cvv = document.getElementById('ccCvv').value;
-    if (cardDigits.length < 15) { msg.textContent = 'Enter a valid card number.'; msg.className = 'modal-msg error'; return; }
-    var em = /^(\d{2})\/(\d{2})$/.exec(expiry);
-    if (!em) { msg.textContent = 'Enter expiry as MM/YY.'; msg.className = 'modal-msg error'; return; }
-    if (cvv.length < 3) { msg.textContent = 'Enter a valid CVV.'; msg.className = 'modal-msg error'; return; }
-
     var session = getSession();
     if (!session) { msg.textContent = 'Please sign in first.'; msg.className = 'modal-msg error'; return; }
 
-    msg.textContent = 'Processing payment...'; msg.className = 'modal-msg';
+    msg.textContent = 'Redirecting to secure Stripe checkout...'; msg.className = 'modal-msg';
     try {
-      await new Promise(function (res) { setTimeout(res, 700); }); // simulated processing delay
-      await saveSubscription(session.email, checkoutContext.plan, checkoutContext.price);
-      msg.textContent = 'Payment successful! You are now subscribed to ' + checkoutContext.plan + '.';
-      msg.className = 'modal-msg success';
-      setTimeout(function () { checkoutModal.classList.remove('open'); }, 1300);
+      var res = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          plan: checkoutContext.plan,
+          priceRs: checkoutContext.price,
+          email: session.email
+        })
+      });
+      var data = await res.json();
+      if (!res.ok || !data.url) {
+        msg.textContent = data.error || 'Could not start checkout. Try again.';
+        msg.className = 'modal-msg error';
+        return;
+      }
+      // Remember which plan was being purchased so we can activate it on return
+      sessionStorage.setItem('velara-pending-plan', JSON.stringify(checkoutContext));
+      window.location.href = data.url; // Redirect to Stripe's hosted checkout page
     } catch (err) {
       msg.textContent = 'Something went wrong. Please try again.'; msg.className = 'modal-msg error';
     }
   });
+
+  // ===== Handle return from Stripe Checkout =====
+  (function handleStripeReturn() {
+    var params = new URLSearchParams(window.location.search);
+    var status = params.get('checkout');
+    if (!status) return;
+    var pendingRaw = sessionStorage.getItem('velara-pending-plan');
+    var pending = pendingRaw ? JSON.parse(pendingRaw) : null;
+    sessionStorage.removeItem('velara-pending-plan');
+    // Clean the URL so refreshing doesn't re-trigger this
+    window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+
+    if (status === 'success' && pending) {
+      var session = getSession();
+      if (session) {
+        saveSubscription(session.email, pending.plan, pending.price).then(function () {
+          alert('Payment successful! You are now subscribed to ' + pending.plan + '.');
+        });
+      }
+    } else if (status === 'cancelled') {
+      // No action needed — user backed out of Stripe checkout
+    }
+  })();
 
   document.querySelectorAll('.subscribe-btn').forEach(function (btn) {
     btn.addEventListener('click', async function () {
@@ -1525,8 +1559,12 @@
     else { showSite(); }
   }
   window.addEventListener('hashchange', routeCheck);
-  renderAuthArea();
-  routeCheck();
+  // Firebase keeps the user signed in across page loads/devices automatically.
+  // Re-render the nav and re-run routing whenever auth state changes.
+  auth.onAuthStateChanged(function () {
+    renderAuthArea();
+    routeCheck();
+  });
 </script>
 </body>
 </html>
