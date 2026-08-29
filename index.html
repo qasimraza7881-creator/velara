@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+<!-- ===== SEO META TAGS ===== -->
+<title>Velara | Watch Series, Movies & Originals Online</title>
+<meta name="description" content="Stream unlimited series, films and Velara Originals in HD. Ad-free streaming across all your devices. Start watching today." />
+<meta name="keywords" content="watch series online, stream movies, Velara originals, sci-fi series, action movies, streaming app" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.velara.com/" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<meta name="theme-color" content="#0a0a0a" />
+
+<!-- Open Graph (Facebook/LinkedIn share) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Velara | Watch Series, Movies & Originals Online" />
+<meta property="og:description" content="Stream unlimited series, films and Velara Originals in HD. Ad-free streaming across all your devices." />
+<meta property="og:url" content="https://www.velara.com/" />
+<meta property="og:site_name" content="Velara" />
+<meta property="og:image" content="https://www.velara.com/assets/og-cover.jpg" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Velara | Watch Series, Movies & Originals Online" />
+<meta name="twitter:description" content="Stream unlimited series, films and Velara Originals in HD." />
+<meta name="twitter:image" content="https://www.velara.com/assets/og-cover.jpg" />
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Velara",
+  "url": "https://www.velara.com",
+  "logo": "https://www.velara.com/assets/logo.png",
+  "sameAs": [
+    "https://www.instagram.com/velara",
+    "https://twitter.com/velara"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Velara",
+  "url": "https://www.velara.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.velara.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --accent: #E8402C;
+    --bg: #0a0a0a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+  }
+  .brand-font { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.03em; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; }
+
+  /* Navbar */
+  header.site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 4vw;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+    transition: background 0.3s ease;
+  }
+  header.site-nav.scrolled { background: #000; }
+  .logo { font-size: 2rem; color: var(--accent); }
+  nav.main-nav { display: flex; gap: 22px; font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+  nav.main-nav a:hover { color: #fff; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .avatar {
+    width: 32px; height: 32px; border-radius: 4px;
+    background: var(--accent); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.8rem; cursor: pointer;
+  }
+  .nav-login-btn {
+    background: var(--accent); border: none; color: #fff; font-weight: 600;
+    padding: 8px 18px; border-radius: 4px; font-size: 0.85rem; cursor: pointer;
+  }
+  .nav-login-btn:hover { opacity: 0.9; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    width: 100%; height: 85vh;
+    background: linear-gradient(135deg, #3a0d05, #150502, #000);
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, #000 5%, rgba(0,0,0,0.1) 50%, transparent 80%),
+                linear-gradient(to right, rgba(0,0,0,0.75), transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 0 4vw 8vw; max-width: 620px; }
+  .hero-tag { color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 0.05em; }
+  .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); line-height: 0.95; margin-bottom: 18px; }
+  .hero p { color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.6; margin-bottom: 26px; }
+  .hero-buttons { display: flex; gap: 12px; }
+  .btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 4px; font-weight: 600; font-size: 0.95rem;
+    border: none; cursor: pointer;
+  }
+  .btn-primary { background: #fff; color: #000; }
+  .btn-primary:hover { background: rgba(255,255,255,0.85); }
+  .btn-secondary { background: rgba(255,255,255,0.18); color: #fff; backdrop-filter: blur(4px); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.28); }
+
+  /* Rows */
+  main { position: relative; z-index: 3; margin-top: -8vw; padding-bottom: 60px; }
+  .row-section { margin-bottom: 42px; }
+  .row-section h2 { padding: 0 4vw; font-size: 1.25rem; margin-bottom: 12px; font-weight: 600; }
+  .row-track {
+    display: flex; gap: 8px; overflow-x: auto; padding: 0 4vw 8px;
+    scrollbar-width: none;
+  }
+  .row-track::-webkit-scrollbar { display: none; }
+  .card {
+    flex: none; width: 220px; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden;
+    position: relative; cursor: pointer; transition: transform 0.3s ease;
+    display: flex; align-items: flex-end; padding: 12px;
+  }
+  .card:hover { transform: scale(1.08); z-index: 5; }
+  .card h3 { font-size: 0.9rem; font-weight: 600; }
+  .card span { font-size: 0.7rem; color: rgba(255,255,255,0.65); }
+
+  /* Pricing */
+  .pricing { padding: 70px 4vw; text-align: center; background: #0a0a0a; }
+  .pricing-title { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 8px; }
+  .pricing-sub { color: rgba(255,255,255,0.55); margin-bottom: 40px; font-size: 0.95rem; }
+  .plans-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; max-width: 1100px; margin: 0 auto;
+  }
+  .plan-card {
+    position: relative;
+    background: #131313; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+    padding: 28px 22px; text-align: left; transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .plan-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .plan-card.featured { border-color: var(--accent); background: #1a1210; }
+  .plan-card .badge {
+    position: absolute; top: -12px; right: 18px;
+    background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .plan-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .plan-price { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+  .plan-price span { font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.5); }
+  .plan-card ul { list-style: none; margin-bottom: 22px; }
+  .plan-card ul li {
+    font-size: 0.85rem; color: rgba(255,255,255,0.7); padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .plan-card ul li:first-child { border-top: none; }
+  .subscribe-btn { width: 100%; justify-content: center; }
+
+  /* Modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.75); align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #141414; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+    padding: 28px; width: 100%; max-width: 380px;
+  }
+  .modal-box h3 { font-size: 1.3rem; margin-bottom: 4px; }
+  .modal-box .modal-plan-line { color: rgba(255,255,255,0.55); font-size: 0.85rem; margin-bottom: 18px; }
+  .modal-box label { display: block; font-size: 0.8rem; margin-bottom: 6px; color: rgba(255,255,255,0.7); }
+  .modal-box input {
+    width: 100%; padding: 11px 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.15);
+    background: #0a0a0a; color: #fff; font-size: 0.9rem; margin-bottom: 16px;
+  }
+  .modal-box input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .modal-actions { display: flex; gap: 10px; }
+  .modal-actions .btn { flex: 1; justify-content: center; }
+  .modal-close { background: none; border: none; color: rgba(255,255,255,0.5); float: right; cursor: pointer; font-size: 1.1rem; }
+  .modal-msg { font-size: 0.8rem; margin-top: 10px; min-height: 18px; }
+  .modal-msg.success { color: #4ade80; }
+  .modal-msg.error { color: #f87171; }
+
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 40px 4vw; color: rgba(255,255,255,0.4); font-size: 0.8rem;
+  }
+  footer .foot-links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+  footer .foot-links a:hover { color: #fff; text-decoration: underline; }
+
+  @media (max-width: 700px) {
+    nav.main-nav { display: none; }
+    .card { width: 150px; }
+  }
+
+  /* ===== Admin Panel Styles ===== */
+
+  :root { --accent: #E8402C; --bg: #0a0a0a; --panel: #131313; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--bg); color:#fff; font-family:'Inter',sans-serif; }
+  .brand-font { font-family:'Bebas Neue',sans-serif; letter-spacing:0.03em; }
+
+  /* Login screen */
+  .login-wrap {
+    min-height: 100vh; display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .login-box {
+    background: var(--panel); border:1px solid rgba(255,255,255,0.08); border-radius:10px;
+    padding: 36px 30px; width:100%; max-width: 360px;
+  }
+  .login-box .logo { color: var(--accent); font-size:2rem; display:block; text-align:center; margin-bottom:6px; }
+  .login-box p.sub { text-align:center; color:rgba(255,255,255,0.5); font-size:0.82rem; margin-bottom:26px; }
+  .login-box label { display:block; font-size:0.8rem; margin-bottom:6px; color:rgba(255,255,255,0.7); }
+  .login-box input {
+    width:100%; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15);
+    background:#0a0a0a; color:#fff; font-size:0.9rem; margin-bottom:16px;
+  }
+  .login-box input:focus { outline:2px solid var(--accent); border-color:transparent; }
+  .login-box button {
+    width:100%; padding:12px; border:none; border-radius:5px; background:var(--accent);
+    color:#fff; font-weight:700; font-size:0.9rem; cursor:pointer;
+  }
+  .login-box button:hover { opacity:0.9; }
+  .login-msg { font-size:0.8rem; margin-top:12px; color:#f87171; min-height:16px; text-align:center; }
+
+  /* Dashboard */
+  .dash { display:none; }
+  .dash.open { display:block; }
+  header.admin-nav {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 4vw; border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  header.admin-nav .logo { color:var(--accent); font-size:1.7rem; }
+  header.admin-nav .who { font-size:0.8rem; color:rgba(255,255,255,0.5); }
+  header.admin-nav .who span { color:#fff; }
+  header.admin-nav button.logout {
+    background:none; border:1px solid rgba(255,255,255,0.2); color:#fff;
+    padding:7px 14px; border-radius:5px; font-size:0.8rem; cursor:pointer;
+  }
+  header.admin-nav button.logout:hover { border-color:var(--accent); }
+
+  main.admin-main { padding: 30px 4vw 60px; max-width:1200px; margin:0 auto; }
+  h1.page-title { font-size:1.6rem; margin-bottom:22px; }
+
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:34px; }
+  .stat-card { background:var(--panel); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:20px; }
+  .stat-card .label { font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:8px; }
+  .stat-card .value { font-size:1.8rem; font-weight:800; }
+  .stat-card .value.accent { color: var(--accent); }
+
+  .plan-breakdown { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:34px; }
+  .plan-chip { background:var(--panel); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:14px 16px; }
+  .plan-chip .pname { font-size:0.85rem; color:rgba(255,255,255,0.7); margin-bottom:4px; }
+  .plan-chip .pcount { font-size:1.4rem; font-weight:700; }
+
+  table.sub-table { width:100%; border-collapse:collapse; background:var(--panel); border-radius:10px; overflow:hidden; }
+  table.sub-table th, table.sub-table td { text-align:left; padding:12px 16px; font-size:0.85rem; }
+  table.sub-table th { background:#1a1a1a; color:rgba(255,255,255,0.6); font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.04em; }
+  table.sub-table tbody tr { border-top:1px solid rgba(255,255,255,0.06); }
+  table.sub-table tbody tr:hover { background:rgba(255,255,255,0.03); }
+  .plan-badge { padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:700; background:rgba(232,64,44,0.15); color:var(--accent); }
+  .empty-state { padding:40px; text-align:center; color:rgba(255,255,255,0.4); background:var(--panel); border-radius:10px; }
+  .refresh-btn { background:none; border:1px solid rgba(255,255,255,0.2); color:#fff; padding:8px 16px; border-radius:5px; font-size:0.8rem; cursor:pointer; margin-bottom:16px; }
+  .refresh-btn:hover { border-color:var(--accent); }
+  .adm-section-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+
+  /* Modal */
+  .adm-overlay {
+    display:none; position:fixed; inset:0; z-index:200;
+    background:rgba(0,0,0,0.75); align-items:center; justify-content:center; padding:20px;
+  }
+  .adm-overlay.open { display:flex; }
+  .adm-box {
+    background:#141414; border:1px solid rgba(255,255,255,0.1); border-radius:10px;
+    padding:28px; width:100%; max-width:400px;
+  }
+  .adm-box h3 { font-size:1.3rem; margin-bottom:4px; }
+  .adm-plan-line { color:rgba(255,255,255,0.55); font-size:0.85rem; margin-bottom:18px; }
+  .adm-box label { display:block; font-size:0.8rem; margin-bottom:6px; color:rgba(255,255,255,0.7); }
+  .adm-box input {
+    width:100%; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15);
+    background:#0a0a0a; color:#fff; font-size:0.9rem; margin-bottom:16px;
+  }
+  .adm-box input:focus, .adm-box select:focus { outline:2px solid var(--accent); border-color:transparent; }
+  .adm-actions { display:flex; gap:10px; }
+  .adm-actions .btn {
+    flex:1; padding:12px; border:none; border-radius:5px; background:var(--accent);
+    color:#fff; font-weight:700; font-size:0.9rem; cursor:pointer; display:flex; align-items:center;
+  }
+  .adm-actions .btn:hover { opacity:0.9; }
+  .adm-close { background:none; border:none; color:rgba(255,255,255,0.5); float:right; cursor:pointer; font-size:1.1rem; }
+  .adm-msg { font-size:0.8rem; margin-top:10px; min-height:18px; }
+  .adm-msg.success { color:#4ade80; }
+  .adm-msg.error { color:#f87171; }
+
+  /* Titles grid */
+  .titles-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
+  .title-card {
+    border-radius:8px; aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:flex-end;
+    padding:12px; position:relative;
+  }
+  .title-card h4 { font-size:0.9rem; font-weight:700; }
+  .title-card span { font-size:0.72rem; color:rgba(255,255,255,0.75); }
+  .title-card .del-btn {
+    position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.55); border:none; color:#fff;
+    width:24px; height:24px; border-radius:50%; cursor:pointer; font-size:0.8rem;
+  }
+  .title-card .del-btn:hover { background:var(--accent); }
+
+</style>
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <div style="display:flex; align-items:center; gap:32px;">
+    <span class="logo brand-font">VELARA</span>
+    <nav class="main-nav">
+      <a href="/" style="color:#fff;font-weight:600;">Home</a>
+      <a href="/series">Series</a>
+      <a href="/films">Films</a>
+      <a href="/new">New &amp; Popular</a>
+      <a href="/mylist">My List</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+  </div>
+  <div class="nav-right">
+    <span aria-label="Search">🔍</span>
+    <span aria-label="Notifications">🔔</span>
+    <button id="loginNavBtn" class="nav-login-btn">Login</button>
+    <div class="avatar" id="navAvatar" style="display:none;" title="Log out"></div>
+  </div>
+</header>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" id="loginModalCloseBtn" aria-label="Close">✕</button>
+    <h3>Log in to Velara</h3>
+    <p class="modal-plan-line">Use the Gmail you subscribed with</p>
+    <form id="loginModalForm">
+      <label for="loginEmail">Gmail address</label>
+      <input type="email" id="loginEmail" placeholder="you@gmail.com" required />
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Log In</button>
+      </div>
+      <p class="modal-msg" id="loginModalMsg"></p>
+    </form>
+  </div>
+</div>
+
+<section class="hero" aria-label="Featured title">
+  <div class="hero-content">
+    <p class="hero-tag">NEW SEASON</p>
+    <h1 class="brand-font">Ashfall Protocol</h1>
+    <p>A disgraced field agent has ninety-six hours to stop a weapon that shouldn't exist from reaching a city that doesn't know it's already a target.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary" aria-label="Play Ashfall Protocol">▶ Play</button>
+      <button class="btn btn-secondary" aria-label="More info about Ashfall Protocol">ⓘ More Info</button>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+  <h2 id="pricing-heading" class="brand-font pricing-title">Plans For Every Screen</h2>
+  <p class="pricing-sub">Cancel anytime. No hidden fees. Prices in PKR, billed monthly.</p>
+  <div class="plans-grid">
+
+    <div class="plan-card" data-plan="Mobile" data-price="200">
+      <h3>Mobile</h3>
+      <p class="plan-price">Rs. 200<span>/mo</span></p>
+      <ul>
+        <li>Watch on phone &amp; tablet</li>
+        <li>480p streaming</li>
+        <li>1 screen at a time</li>
+      </ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card" data-plan="Basic" data-price="400">
+      <h3>Basic</h3>
+      <p class="plan-price">Rs. 400<span>/mo</span></p>
+      <ul>
+        <li>Watch on any device</li>
+        <li>720p HD streaming</li>
+        <li>1 screen at a time</li>
+      </ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card featured" data-plan="Standard" data-price="750">
+      <span class="badge">Most Popular</span>
+      <h3>Standard</h3>
+      <p class="plan-price">Rs. 750<span>/mo</span></p>
+      <ul>
+        <li>Watch on any device</li>
+        <li>1080p Full HD streaming</li>
+        <li>2 screens at a time</li>
+      </ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card" data-plan="Premium" data-price="1050">
+      <h3>Premium</h3>
+      <p class="plan-price">Rs. 1050<span>/mo</span></p>
+      <ul>
+        <li>Watch on any device</li>
+        <li>4K + HDR streaming</li>
+        <li>4 screens at a time</li>
+      </ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+
+  </div>
+</section>
+
+<main>
+  <section class="row-section" id="tmdbSection" aria-labelledby="row-tmdb" style="display:none;">
+    <h2 id="row-tmdb">Trending Movies (Live Data)</h2>
+    <div class="row-track" id="tmdbTrack"></div>
+  </section>
+
+  <section class="row-section" id="newReleasesSection" aria-labelledby="row-new" style="display:none;">
+    <h2 id="row-new">New Releases</h2>
+    <div class="row-track" id="newReleasesTrack"></div>
+  </section>
+
+  <section class="row-section" aria-labelledby="row-trending">
+    <h2 id="row-trending">Trending Now</h2>
+    <div class="row-track">
+      <a class="card" aria-label="Ashfall Protocol poster thumbnail" href="/title/ashfall-protocol" style="background:linear-gradient(135deg,#c2410c,#7f1d1d);"><h3>Ashfall Protocol<br><span>Action • 2026</span></h3></a>
+      <a class="card" aria-label="Quiet Hours poster thumbnail" href="/title/quiet-hours" style="background:linear-gradient(135deg,#475569,#0f172a);"><h3>Quiet Hours<br><span>Drama • 2025</span></h3></a>
+      <a class="card" aria-label="Nightglass poster thumbnail" href="/title/nightglass" style="background:linear-gradient(135deg,#0891b2,#1e3a8a);"><h3>Nightglass<br><span>Sci-Fi • 2026</span></h3></a>
+      <a class="card" aria-label="Paper Kingdoms poster thumbnail" href="/title/paper-kingdoms" style="background:linear-gradient(135deg,#059669,#134e4a);"><h3>Paper Kingdoms<br><span>Fantasy • 2024</span></h3></a>
+      <a class="card" aria-label="The Long Static poster thumbnail" href="/title/the-long-static" style="background:linear-gradient(135deg,#7e22ce,#312e81);"><h3>The Long Static<br><span>Thriller • 2025</span></h3></a>
+      <a class="card" aria-label="Salt &amp; Iron poster thumbnail" href="/title/salt-and-iron" style="background:linear-gradient(135deg,#d97706,#7c2d12);"><h3>Salt &amp; Iron<br><span>Drama • 2026</span></h3></a>
+    </div>
+  </section>
+
+  <section class="row-section" aria-labelledby="row-related">
+    <h2 id="row-related">Because You Watched Nightglass</h2>
+    <div class="row-track">
+      <a class="card" aria-label="Vantablack poster thumbnail" href="/title/vantablack" style="background:linear-gradient(135deg,#4338ca,#0f172a);"><h3>Vantablack<br><span>Sci-Fi • 2025</span></h3></a>
+      <a class="card" aria-label="Echo Chamber poster thumbnail" href="/title/echo-chamber" style="background:linear-gradient(135deg,#be123c,#7f1d1d);"><h3>Echo Chamber<br><span>Thriller • 2024</span></h3></a>
+      <a class="card" aria-label="Ninth Signal poster thumbnail" href="/title/ninth-signal" style="background:linear-gradient(135deg,#1d4ed8,#164e63);"><h3>Ninth Signal<br><span>Sci-Fi • 2026</span></h3></a>
+      <a class="card" aria-label="Halflight poster thumbnail" href="/title/halflight" style="background:linear-gradient(135deg,#ca8a04,#78350f);"><h3>Halflight<br><span>Drama • 2025</span></h3></a>
+      <a class="card" aria-label="Cartography of Ash poster thumbnail" href="/title/cartography-of-ash" style="background:linear-gradient(135deg,#b91c1c,#7c2d12);"><h3>Cartography of Ash<br><span>Action • 2023</span></h3></a>
+      <a class="card" aria-label="Static Bloom poster thumbnail" href="/title/static-bloom" style="background:linear-gradient(135deg,#0d9488,#065f46);"><h3>Static Bloom<br><span>Sci-Fi • 2026</span></h3></a>
+    </div>
+  </section>
+
+  <section class="row-section" aria-labelledby="row-originals">
+    <h2 id="row-originals">Velara Originals</h2>
+    <div class="row-track">
+      <a class="card" aria-label="Marrow Street poster thumbnail" href="/title/marrow-street" style="background:linear-gradient(135deg,#57534e,#1c1917);"><h3>Marrow Street<br><span>Crime • 2025</span></h3></a>
+      <a class="card" aria-label="The Understudy poster thumbnail" href="/title/the-understudy" style="background:linear-gradient(135deg,#a21caf,#3b0764);"><h3>The Understudy<br><span>Drama • 2026</span></h3></a>
+      <a class="card" aria-label="Low Tide poster thumbnail" href="/title/low-tide" style="background:linear-gradient(135deg,#0369a1,#1e3a8a);"><h3>Low Tide<br><span>Mystery • 2024</span></h3></a>
+      <a class="card" aria-label="Foxglove poster thumbnail" href="/title/foxglove" style="background:linear-gradient(135deg,#65a30d,#14532d);"><h3>Foxglove<br><span>Fantasy • 2025</span></h3></a>
+      <a class="card" aria-label="Iron Season poster thumbnail" href="/title/iron-season" style="background:linear-gradient(135deg,#991b1b,#000);"><h3>Iron Season<br><span>Action • 2026</span></h3></a>
+      <a class="card" aria-label="Antechamber poster thumbnail" href="/title/antechamber" style="background:linear-gradient(135deg,#6d28d9,#000);"><h3>Antechamber<br><span>Horror • 2025</span></h3></a>
+    </div>
+  </section>
+
+  <section class="row-section" aria-labelledby="row-comedy">
+    <h2 id="row-comedy">Comedies</h2>
+    <div class="row-track">
+      <a class="card" aria-label="Bad Directions poster thumbnail" href="/title/bad-directions" style="background:linear-gradient(135deg,#eab308,#c2410c);"><h3>Bad Directions<br><span>Comedy • 2024</span></h3></a>
+      <a class="card" aria-label="Full Refund poster thumbnail" href="/title/full-refund" style="background:linear-gradient(135deg,#ec4899,#9f1239);"><h3>Full Refund<br><span>Comedy • 2025</span></h3></a>
+      <a class="card" aria-label="Overqualified poster thumbnail" href="/title/overqualified" style="background:linear-gradient(135deg,#84cc16,#166534);"><h3>Overqualified<br><span>Comedy • 2026</span></h3></a>
+      <a class="card" aria-label="The Group Chat poster thumbnail" href="/title/the-group-chat" style="background:linear-gradient(135deg,#06b6d4,#115e59);"><h3>The Group Chat<br><span>Comedy • 2025</span></h3></a>
+      <a class="card" aria-label="Minor Setbacks poster thumbnail" href="/title/minor-setbacks" style="background:linear-gradient(135deg,#f59e0b,#991b1b);"><h3>Minor Setbacks<br><span>Comedy • 2023</span></h3></a>
+      <a class="card" aria-label="Petty Theft poster thumbnail" href="/title/petty-theft" style="background:linear-gradient(135deg,#a855f7,#701a75);"><h3>Petty Theft<br><span>Comedy • 2026</span></h3></a>
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="subscribeModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+    <h3>Subscribe to Velara</h3>
+    <p class="modal-plan-line" id="modalPlanLine">Plan — Rs. 0/mo</p>
+    <form id="subscribeForm">
+      <label for="subEmail">Gmail address</label>
+      <input type="email" id="subEmail" placeholder="you@gmail.com" required />
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Confirm Subscribe</button>
+      </div>
+      <p class="modal-msg" id="modalMsg"></p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-links">
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/faq">FAQ</a>
+    <a href="/careers">Careers</a>
+    <a href="#admin" id="adminLink">Admin</a>
+  </div>
+  <p>© 2026 Velara. All titles and artwork are fictional — demo streaming site.</p>
+</footer>
+
+<script>
+  // ===== Storage polyfill: window.storage only exists inside Claude.ai artifacts.
+  // On a real deployed site (like Vercel) it's undefined, so we fall back to
+  // localStorage with the same get/set/delete/list interface. =====
+  if (!window.storage) {
+    window.storage = {
+      _key: function (key, shared) { return 'velara:' + (shared ? 'shared:' : 'local:') + key; },
+      get: async function (key, shared) {
+        var raw = localStorage.getItem(this._key(key, shared));
+        if (raw === null) return null;
+        return { key: key, value: raw, shared: !!shared };
+      },
+      set: async function (key, value, shared) {
+        localStorage.setItem(this._key(key, shared), value);
+        return { key: key, value: value, shared: !!shared };
+      },
+      delete: async function (key, shared) {
+        var k = this._key(key, shared);
+        var existed = localStorage.getItem(k) !== null;
+        localStorage.removeItem(k);
+        return { key: key, deleted: existed, shared: !!shared };
+      },
+      list: async function (prefix, shared) {
+        var out = [];
+        var searchPrefix = 'velara:' + (shared ? 'shared:' : 'local:') + (prefix || '');
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (k.indexOf(searchPrefix) === 0) {
+            out.push(k.slice(('velara:' + (shared ? 'shared:' : 'local:')).length));
+          }
+        }
+        return { keys: out, prefix: prefix, shared: !!shared };
+      }
+    };
+  }
+
+  window.addEventListener('scroll', function () {
+    var nav = document.getElementById('siteNav');
+    if (window.scrollY > 40) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  });
+
+  // ===== Subscribe modal + shared storage =====
+  var modal = document.getElementById('subscribeModal');
+  var modalPlanLine = document.getElementById('modalPlanLine');
+  var modalMsg = document.getElementById('modalMsg');
+  var subscribeForm = document.getElementById('subscribeForm');
+  var currentPlan = null;
+
+  document.querySelectorAll('.subscribe-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.plan-card');
+      currentPlan = { name: card.dataset.plan, price: card.dataset.price };
+      modalPlanLine.textContent = currentPlan.name + ' — Rs. ' + currentPlan.price + '/mo';
+      modalMsg.textContent = '';
+      modalMsg.className = 'modal-msg';
+      document.getElementById('subEmail').value = '';
+      modal.classList.add('open');
+    });
+  });
+
+  document.getElementById('modalCloseBtn').addEventListener('click', function () {
+    modal.classList.remove('open');
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+
+  // ===== Load admin-added New Releases =====
+  async function loadNewReleases() {
+    var section = document.getElementById('newReleasesSection');
+    var track = document.getElementById('newReleasesTrack');
+    var slugs = [];
+    try {
+      var idxResult = await window.storage.get('titles-index', true);
+      if (idxResult && idxResult.value) slugs = JSON.parse(idxResult.value);
+    } catch (err) { slugs = []; }
+
+    if (!slugs.length) return;
+
+    var titles = [];
+    for (var i = 0; i < slugs.length; i++) {
+      try {
+        var r = await window.storage.get('title:' + slugs[i], true);
+        if (r && r.value) titles.push(JSON.parse(r.value));
+      } catch (err) { /* skip */ }
+    }
+    if (!titles.length) return;
+
+    titles.sort(function (a, b) { return new Date(b.addedAt) - new Date(a.addedAt); });
+
+    track.innerHTML = titles.map(function (t) {
+      return '<a class="card" aria-label="' + t.name + ' poster thumbnail" href="/title/' + t.slug + '" style="background:' + t.color + ';">' +
+        '<h3>' + t.name + '<br><span>' + t.genre + ' • ' + t.year + '</span></h3></a>';
+    }).join('');
+
+    section.style.display = 'block';
+  }
+  loadNewReleases();
+
+  // ===== Live TMDB Trending Movies =====
+  async function loadTmdbTrending() {
+    var section = document.getElementById('tmdbSection');
+    var track = document.getElementById('tmdbTrack');
+    var key = '0dbdaf157a031c58b0c2f2b25b98b4ff';
+    try {
+      var r = await window.storage.get('tmdb-api-key', true);
+      if (r && r.value) key = r.value;
+    } catch (err) { /* fall back to hardcoded key */ }
+
+    if (!key) return; // No key configured yet — section stays hidden
+
+    try {
+      var res = await fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=' + encodeURIComponent(key));
+      if (!res.ok) return;
+      var data = await res.json();
+      var movies = (data.results || []).slice(0, 12);
+      if (!movies.length) return;
+
+      track.innerHTML = movies.map(function (m) {
+        var poster = m.poster_path
+          ? 'https://image.tmdb.org/t/p/w342' + m.poster_path
+          : '';
+        var year = (m.release_date || '').slice(0, 4);
+        var bg = poster
+          ? 'background-image:url(' + poster + ');background-size:cover;background-position:center;'
+          : 'background:linear-gradient(135deg,#333,#111);';
+        return '<div class="card" style="' + bg + '">' +
+          '<h3>' + m.title + '<br><span>' + (year || '') + ' • TMDB ★ ' + (m.vote_average ? m.vote_average.toFixed(1) : '—') + '</span></h3></div>';
+      }).join('');
+
+      section.style.display = 'block';
+    } catch (err) {
+      // Network/key error — leave section hidden
+    }
+  }
+  loadTmdbTrending();
+
+  // ===== Login (checks subscriber records) =====
+  var loginNavBtn = document.getElementById('loginNavBtn');
+  var navAvatar = document.getElementById('navAvatar');
+  var loginModal = document.getElementById('loginModal');
+  var loginModalMsg = document.getElementById('loginModalMsg');
+  var loginModalForm = document.getElementById('loginModalForm');
+  var loggedInUser = null;
+
+  loginNavBtn.addEventListener('click', function () {
+    loginModalMsg.textContent = '';
+    loginModalMsg.className = 'modal-msg';
+    document.getElementById('loginEmail').value = '';
+    loginModal.classList.add('open');
+  });
+  document.getElementById('loginModalCloseBtn').addEventListener('click', function () {
+    loginModal.classList.remove('open');
+  });
+  loginModal.addEventListener('click', function (e) {
+    if (e.target === loginModal) loginModal.classList.remove('open');
+  });
+
+  loginModalForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    loginModalMsg.textContent = 'Checking...';
+    loginModalMsg.className = 'modal-msg';
+
+    if (email === ADMIN_EMAIL) {
+      loggedInUser = { email: email, plan: 'Admin (Free Access)', price: 0, subscribedAt: new Date().toISOString() };
+      loginNavBtn.style.display = 'none';
+      navAvatar.style.display = 'flex';
+      navAvatar.textContent = email.charAt(0).toUpperCase();
+      navAvatar.title = email + ' (Admin — full free access) — click to log out';
+      loginModalMsg.textContent = 'Welcome back, Admin! Full access unlocked.';
+      loginModalMsg.className = 'modal-msg success';
+      setTimeout(function () { loginModal.classList.remove('open'); }, 1200);
+      return;
+    }
+
+    try {
+      var r = await window.storage.get('subscriber:' + email, true);
+      if (r && r.value) {
+        var record = JSON.parse(r.value);
+        loggedInUser = record;
+        loginNavBtn.style.display = 'none';
+        navAvatar.style.display = 'flex';
+        navAvatar.textContent = email.charAt(0).toUpperCase();
+        navAvatar.title = email + ' (' + record.plan + ' plan) — click to log out';
+        loginModalMsg.textContent = 'Welcome back! Logged in on ' + record.plan + ' plan.';
+        loginModalMsg.className = 'modal-msg success';
+        setTimeout(function () { loginModal.classList.remove('open'); }, 1200);
+      } else {
+        loginModalMsg.textContent = 'No subscription found for this Gmail. Please subscribe first.';
+        loginModalMsg.className = 'modal-msg error';
+      }
+    } catch (err) {
+      loginModalMsg.textContent = 'No subscription found for this Gmail. Please subscribe first.';
+      loginModalMsg.className = 'modal-msg error';
+    }
+  });
+
+  navAvatar.addEventListener('click', function () {
+    loggedInUser = null;
+    navAvatar.style.display = 'none';
+    loginNavBtn.style.display = 'inline-block';
+  });
+
+  subscribeForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = document.getElementById('subEmail').value.trim().toLowerCase();
+    if (!email.endsWith('@gmail.com')) {
+      modalMsg.textContent = 'Please use a Gmail address to subscribe.';
+      modalMsg.className = 'modal-msg error';
+      return;
+    }
+    modalMsg.textContent = 'Processing...';
+    modalMsg.className = 'modal-msg';
+
+    try {
+      var record = {
+        email: email,
+        plan: currentPlan.name,
+        price: currentPlan.price,
+        subscribedAt: new Date().toISOString()
+      };
+      // Save individual subscriber record (shared so admin panel can read it)
+      await window.storage.set('subscriber:' + email, JSON.stringify(record), true);
+
+      // Maintain an index of all subscriber emails
+      var indexResult = null;
+      try {
+        indexResult = await window.storage.get('subscriber-index', true);
+      } catch (err) {
+        indexResult = null;
+      }
+      var emails = [];
+      if (indexResult && indexResult.value) {
+        emails = JSON.parse(indexResult.value);
+      }
+      if (emails.indexOf(email) === -1) {
+        emails.push(email);
+      }
+      await window.storage.set('subscriber-index', JSON.stringify(emails), true);
+
+      modalMsg.textContent = 'Subscribed! Welcome to Velara ' + currentPlan.name + '.';
+      modalMsg.className = 'modal-msg success';
+      setTimeout(function () { modal.classList.remove('open'); }, 1800);
+    } catch (err) {
+      modalMsg.textContent = 'Something went wrong. Please try again.';
+      modalMsg.className = 'modal-msg error';
+    }
+  });
+
+
+  // ===== Admin Panel (merged single-file) =====
+
+  var ADMIN_EMAIL = 'qasimraza7881@gmail.com';
+
+  var loginForm = document.getElementById('loginForm');
+  var loginMsg = document.getElementById('loginMsg');
+  var loginWrap = document.getElementById('loginWrap');
+  var dash = document.getElementById('dash');
+  var whoEmail = document.getElementById('whoEmail');
+
+  loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('adminEmail').value.trim().toLowerCase();
+    if (email === ADMIN_EMAIL) {
+      loginWrap.style.display = 'none';
+      dash.classList.add('open');
+      whoEmail.textContent = email;
+      loadDashboard();
+      loadTitles();
+      loadTmdbKey();
+    } else {
+      loginMsg.textContent = 'This Gmail is not authorized as admin.';
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    dash.classList.remove('open');
+    loginWrap.style.display = 'flex';
+    document.getElementById('adminEmail').value = '';
+    loginMsg.textContent = '';
+  });
+
+  document.getElementById('refreshBtn').addEventListener('click', function () {
+    loadDashboard();
+    loadTitles();
+  });
+
+  async function loadDashboard() {
+    var tableWrap = document.getElementById('tableWrap');
+    tableWrap.innerHTML = '<div class="empty-state">Loading subscribers…</div>';
+
+    var emails = [];
+    try {
+      var indexResult = await window.storage.get('subscriber-index', true);
+      if (indexResult && indexResult.value) {
+        emails = JSON.parse(indexResult.value);
+      }
+    } catch (err) {
+      emails = [];
+    }
+
+    var subscribers = [];
+    for (var i = 0; i < emails.length; i++) {
+      try {
+        var r = await window.storage.get('subscriber:' + emails[i], true);
+        if (r && r.value) subscribers.push(JSON.parse(r.value));
+      } catch (err) { /* skip missing */ }
+    }
+
+    // Stats
+    var total = subscribers.length;
+    var revenue = subscribers.reduce(function (sum, s) { return sum + Number(s.price || 0); }, 0);
+    var planCounts = {};
+    subscribers.forEach(function (s) {
+      planCounts[s.plan] = (planCounts[s.plan] || 0) + 1;
+    });
+    var topPlan = '—';
+    var topCount = 0;
+    Object.keys(planCounts).forEach(function (p) {
+      if (planCounts[p] > topCount) { topCount = planCounts[p]; topPlan = p; }
+    });
+
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statRevenue').textContent = 'Rs. ' + revenue.toLocaleString();
+    document.getElementById('statTopPlan').textContent = topPlan;
+
+    var allPlans = ['Mobile', 'Basic', 'Standard', 'Premium'];
+    var breakdownHtml = allPlans.map(function (p) {
+      return '<div class="plan-chip"><div class="pname">' + p + '</div><div class="pcount">' + (planCounts[p] || 0) + '</div></div>';
+    }).join('');
+    document.getElementById('planBreakdown').innerHTML = breakdownHtml;
+
+    if (subscribers.length === 0) {
+      tableWrap.innerHTML = '<div class="empty-state">No subscribers yet. Once someone subscribes on the main site, they\'ll show up here.</div>';
+      return;
+    }
+
+    subscribers.sort(function (a, b) { return new Date(b.subscribedAt) - new Date(a.subscribedAt); });
+
+    var rows = subscribers.map(function (s) {
+      var date = new Date(s.subscribedAt);
+      var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      return '<tr><td>' + s.email + '</td><td><span class="plan-badge">' + s.plan + '</span></td><td>Rs. ' + s.price + '</td><td>' + dateStr + '</td></tr>';
+    }).join('');
+
+    tableWrap.innerHTML =
+      '<table class="sub-table"><thead><tr><th>Email</th><th>Plan</th><th>Price</th><th>Subscribed</th></tr></thead><tbody>' +
+      rows + '</tbody></table>';
+  }
+
+  // ===== Content management (new titles) =====
+  var titleModal = document.getElementById('titleModal');
+  var titleModalMsg = document.getElementById('titleModalMsg');
+  var titleForm = document.getElementById('titleForm');
+
+  document.getElementById('addTitleOpenBtn').addEventListener('click', function () {
+    titleForm.reset();
+    titleModalMsg.textContent = '';
+    titleModalMsg.className = 'adm-msg';
+    titleModal.classList.add('open');
+  });
+  document.getElementById('titleModalClose').addEventListener('click', function () {
+    titleModal.classList.remove('open');
+  });
+  titleModal.addEventListener('click', function (e) {
+    if (e.target === titleModal) titleModal.classList.remove('open');
+  });
+
+  function slugify(str) {
+    return str.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
+
+  titleForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var name = document.getElementById('tName').value.trim();
+    var genre = document.getElementById('tGenre').value.trim();
+    var year = document.getElementById('tYear').value.trim();
+    var color = document.getElementById('tColor').value;
+    var slug = slugify(name) + '-' + Date.now().toString().slice(-5);
+
+    titleModalMsg.textContent = 'Publishing...';
+    titleModalMsg.className = 'adm-msg';
+
+    try {
+      var record = { slug: slug, name: name, genre: genre, year: year, color: color, addedAt: new Date().toISOString() };
+      await window.storage.set('title:' + slug, JSON.stringify(record), true);
+
+      var idx = [];
+      try {
+        var idxResult = await window.storage.get('titles-index', true);
+        if (idxResult && idxResult.value) idx = JSON.parse(idxResult.value);
+      } catch (err) { idx = []; }
+      idx.push(slug);
+      await window.storage.set('titles-index', JSON.stringify(idx), true);
+
+      titleModalMsg.textContent = 'Published! Now live on the site.';
+      titleModalMsg.className = 'adm-msg success';
+      loadTitles();
+      setTimeout(function () { titleModal.classList.remove('open'); }, 1200);
+    } catch (err) {
+      titleModalMsg.textContent = 'Something went wrong. Please try again.';
+      titleModalMsg.className = 'adm-msg error';
+    }
+  });
+
+  // ===== TMDB API key management =====
+  var tmdbForm = document.getElementById('tmdbForm');
+  var tmdbKeyInput = document.getElementById('tmdbKeyInput');
+  var tmdbMsg = document.getElementById('tmdbMsg');
+
+  async function loadTmdbKey() {
+    try {
+      var r = await window.storage.get('tmdb-api-key', true);
+      if (r && r.value) tmdbKeyInput.value = r.value;
+    } catch (err) { /* no key saved yet */ }
+  }
+
+  tmdbForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var key = tmdbKeyInput.value.trim();
+    tmdbMsg.textContent = 'Saving...';
+    tmdbMsg.className = 'adm-msg';
+    try {
+      await window.storage.set('tmdb-api-key', key, true);
+      tmdbMsg.textContent = 'Saved! The homepage will now show live TMDB trending titles.';
+      tmdbMsg.className = 'adm-msg success';
+    } catch (err) {
+      tmdbMsg.textContent = 'Could not save the key. Please try again.';
+      tmdbMsg.className = 'adm-msg error';
+    }
+  });
+
+  async function loadTitles() {
+    var wrap = document.getElementById('titlesWrap');
+    wrap.innerHTML = '<div class="empty-state">Loading titles…</div>';
+
+    var slugs = [];
+    try {
+      var idxResult = await window.storage.get('titles-index', true);
+      if (idxResult && idxResult.value) slugs = JSON.parse(idxResult.value);
+    } catch (err) { slugs = []; }
+
+    var titles = [];
+    for (var i = 0; i < slugs.length; i++) {
+      try {
+        var r = await window.storage.get('title:' + slugs[i], true);
+        if (r && r.value) titles.push(JSON.parse(r.value));
+      } catch (err) { /* skip missing */ }
+    }
+
+    if (titles.length === 0) {
+      wrap.innerHTML = '<div class="empty-state">No titles added yet. Click "+ Add New Title" to publish your first one.</div>';
+      return;
+    }
+
+    titles.sort(function (a, b) { return new Date(b.addedAt) - new Date(a.addedAt); });
+
+    wrap.innerHTML = '<div class="titles-grid">' + titles.map(function (t) {
+      return '<div class="title-card" style="background:' + t.color + '">' +
+        '<button class="del-btn" data-slug="' + t.slug + '" title="Remove">✕</button>' +
+        '<h4>' + t.name + '</h4><span>' + t.genre + ' • ' + t.year + '</span></div>';
+    }).join('') + '</div>';
+
+    document.querySelectorAll('.del-btn').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        var slug = btn.dataset.slug;
+        try {
+          await window.storage.delete('title:' + slug, true);
+          var idxResult = await window.storage.get('titles-index', true);
+          var idx = idxResult && idxResult.value ? JSON.parse(idxResult.value) : [];
+          idx = idx.filter(function (s) { return s !== slug; });
+          await window.storage.set('titles-index', JSON.stringify(idx), true);
+          loadTitles();
+        } catch (err) { /* ignore */ }
+      });
+    });
+  }
+
+
+  function showAdmin() {
+    document.getElementById('adminApp').style.display = 'block';
+    document.querySelector('header.site-nav').style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    document.getElementById('pricing').style.display = 'none';
+    document.querySelector('main').style.display = 'none';
+    document.querySelector('footer').style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+  function showSite() {
+    document.getElementById('adminApp').style.display = 'none';
+    document.querySelector('header.site-nav').style.display = 'flex';
+    document.querySelector('.hero').style.display = 'flex';
+    document.getElementById('pricing').style.display = 'block';
+    document.querySelector('main').style.display = 'block';
+    document.querySelector('footer').style.display = 'block';
+  }
+  function routeCheck() {
+    if (window.location.hash === '#admin') { showAdmin(); }
+    else { showSite(); }
+  }
+  window.addEventListener('hashchange', routeCheck);
+  routeCheck();
+</script>
+
+
+<div id="adminApp" style="display:none;">
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <span class="logo brand-font">VELARA</span>
+    <p class="sub">Admin Panel — authorized access only</p>
+    <form id="loginForm">
+      <label for="adminEmail">Admin Gmail</label>
+      <input type="email" id="adminEmail" placeholder="you@gmail.com" required />
+      <button type="submit">Sign In</button>
+      <p class="login-msg" id="loginMsg"></p>
+    </form>
+  </div>
+</div>
+
+<div class="dash" id="dash">
+  <header class="admin-nav">
+    <span class="logo brand-font">VELARA <span style="color:#fff;font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:600;">Admin</span></span>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span class="who">Signed in as <span id="whoEmail"></span></span>
+      <button class="logout" id="logoutBtn">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <h1 class="page-title">Dashboard</h1>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="label">Total Subscribers</div>
+        <div class="value" id="statTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Monthly Revenue (PKR)</div>
+        <div class="value accent" id="statRevenue">Rs. 0</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Most Popular Plan</div>
+        <div class="value" id="statTopPlan">—</div>
+      </div>
+    </div>
+
+    <h2 style="font-size:1.1rem;margin-bottom:12px;">Plans Breakdown</h2>
+    <div class="plan-breakdown" id="planBreakdown"></div>
+
+    <div class="adm-section-head">
+      <h2 style="font-size:1.1rem;">Subscribers</h2>
+      <button class="refresh-btn" id="refreshBtn">Refresh</button>
+    </div>
+    <div id="tableWrap"></div>
+
+    <div class="adm-section-head" style="margin-top:44px;">
+      <h2 style="font-size:1.1rem;">Content Library</h2>
+      <button class="refresh-btn" id="addTitleOpenBtn">+ Add New Title</button>
+    </div>
+    <div id="titlesWrap"></div>
+
+    <div class="adm-section-head" style="margin-top:44px;">
+      <h2 style="font-size:1.1rem;">Live Movie Data (TMDB)</h2>
+    </div>
+    <div class="stat-card" style="margin-bottom:30px;">
+      <div class="label" style="margin-bottom:12px;">
+        Connect a free <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener" style="color:var(--accent);">TMDB API key</a>
+        to pull real, legally-licensed trending movie posters &amp; info onto the homepage.
+      </div>
+      <form id="tmdbForm" style="display:flex; gap:10px; flex-wrap:wrap;">
+        <input type="text" id="tmdbKeyInput" placeholder="Paste your TMDB API key" style="flex:1; min-width:200px; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15); background:#0a0a0a; color:#fff; font-size:0.9rem;" />
+        <button type="submit" class="btn btn-primary" style="padding:11px 20px;">Save Key</button>
+      </form>
+      <p class="adm-msg" id="tmdbMsg"></p>
+    </div>
+  </main>
+</div>
+
+<div class="adm-overlay" id="titleModal">
+  <div class="adm-box">
+    <button class="adm-close" id="titleModalClose" aria-label="Close">✕</button>
+    <h3>Add New Title</h3>
+    <p class="adm-plan-line">Publishes instantly to the "New Releases" row</p>
+    <form id="titleForm">
+      <label for="tName">Title Name</label>
+      <input type="text" id="tName" placeholder="e.g. Hollow Signal" required />
+
+      <label for="tGenre">Genre</label>
+      <input type="text" id="tGenre" placeholder="e.g. Sci-Fi, Drama, Comedy" required />
+
+      <label for="tYear">Year</label>
+      <input type="number" id="tYear" placeholder="2026" min="1990" max="2030" required />
+
+      <label for="tColor">Thumbnail Color Theme</label>
+      <select id="tColor" style="width:100%;padding:11px 12px;border-radius:5px;border:1px solid rgba(255,255,255,0.15);background:#0a0a0a;color:#fff;font-size:0.9rem;margin-bottom:16px;">
+        <option value="linear-gradient(135deg,#c2410c,#7f1d1d)">Ember (orange/red)</option>
+        <option value="linear-gradient(135deg,#0891b2,#1e3a8a)">Frost (cyan/blue)</option>
+        <option value="linear-gradient(135deg,#059669,#134e4a)">Forest (green)</option>
+        <option value="linear-gradient(135deg,#7e22ce,#312e81)">Nebula (purple)</option>
+        <option value="linear-gradient(135deg,#ca8a04,#78350f)">Amber (gold/brown)</option>
+        <option value="linear-gradient(135deg,#a21caf,#3b0764)">Orchid (magenta)</option>
+        <option value="linear-gradient(135deg,#57534e,#1c1917)">Slate (grey/black)</option>
+      </select>
+
+      <div class="adm-actions">
+        <button type="submit" class="btn btn-primary" style="justify-content:center;">Publish Title</button>
+      </div>
+      <p class="adm-msg" id="titleModalMsg"></p>
+    </form>
+  </div>
+</div>
+</div>
+</body>
+</html>
