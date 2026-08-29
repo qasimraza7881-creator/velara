@@ -212,6 +212,26 @@
     .card { width: 150px; }
   }
 
+  /* ===== Auth / Checkout ===== */
+  .nav-signin-btn { background: var(--accent); border:none; color:#fff; font-weight:600; padding:8px 18px; border-radius:4px; font-size:0.85rem; cursor:pointer; }
+  .nav-avatar-btn { width:32px; height:32px; border-radius:4px; background:var(--accent); border:none; color:#fff; font-weight:700; font-size:0.8rem; cursor:pointer; }
+  .account-dropdown {
+    display:none; position:absolute; top:42px; right:0; background:#181818; border:1px solid rgba(255,255,255,0.12);
+    border-radius:6px; min-width:180px; padding:8px; z-index:150;
+  }
+  .account-dropdown.open { display:block; }
+  .account-dropdown button, .account-dropdown a {
+    display:block; width:100%; text-align:left; background:none; border:none; color:#fff;
+    padding:9px 10px; font-size:0.85rem; border-radius:4px; cursor:pointer;
+  }
+  .account-dropdown button:hover, .account-dropdown a:hover { background:rgba(255,255,255,0.08); }
+  .account-dropdown .acc-email { padding:9px 10px; font-size:0.75rem; color:rgba(255,255,255,0.5); border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:4px; }
+  .auth-tabs { display:flex; gap:8px; margin-bottom:18px; }
+  .auth-tab { flex:1; text-align:center; padding:9px; border-radius:5px; font-size:0.85rem; font-weight:600; cursor:pointer; background:#0a0a0a; color:rgba(255,255,255,0.6); }
+  .auth-tab.active { background:var(--accent); color:#fff; }
+  .paywall-box { text-align:center; padding:30px 20px; }
+  .paywall-box p { color:rgba(255,255,255,0.65); margin-bottom:18px; }
+
   /* ===== Admin Panel Styles ===== */
 
   :root { --accent: #E8402C; --bg: #0a0a0a; --panel: #131313; }
@@ -338,32 +358,15 @@
       <a href="/series">Series</a>
       <a href="/films">Films</a>
       <a href="/new">New &amp; Popular</a>
-      <a href="/mylist">My List</a>
+      <a href="#mylist" id="myListNavLink">My List</a>
     </nav>
   </div>
   <div class="nav-right">
     <span aria-label="Search">🔍</span>
     <span aria-label="Notifications">🔔</span>
-    <button id="loginNavBtn" class="nav-login-btn">Login</button>
-    <div class="avatar" id="navAvatar" style="display:none;" title="Log out"></div>
+    <div id="authArea" style="position:relative;"></div>
   </div>
 </header>
-
-<div class="modal-overlay" id="loginModal">
-  <div class="modal-box">
-    <button class="modal-close" id="loginModalCloseBtn" aria-label="Close">✕</button>
-    <h3>Log in to Velara</h3>
-    <p class="modal-plan-line">Use the Gmail you subscribed with</p>
-    <form id="loginModalForm">
-      <label for="loginEmail">Gmail address</label>
-      <input type="email" id="loginEmail" placeholder="you@gmail.com" required />
-      <div class="modal-actions">
-        <button type="submit" class="btn btn-primary">Log In</button>
-      </div>
-      <p class="modal-msg" id="loginModalMsg"></p>
-    </form>
-  </div>
-</div>
 
 <section class="hero" aria-label="Featured title">
   <div class="hero-content">
@@ -371,62 +374,9 @@
     <h1 class="brand-font">Ashfall Protocol</h1>
     <p>A disgraced field agent has ninety-six hours to stop a weapon that shouldn't exist from reaching a city that doesn't know it's already a target.</p>
     <div class="hero-buttons">
-      <button class="btn btn-primary" aria-label="Play Ashfall Protocol">▶ Play</button>
-      <button class="btn btn-secondary" aria-label="More info about Ashfall Protocol">ⓘ More Info</button>
+      <button class="btn btn-primary" aria-label="Play Ashfall Protocol" onclick="showTitleDetail('Ashfall Protocol','Action','2026','ashfall-protocol')">▶ Play</button>
+      <button class="btn btn-secondary" aria-label="More info about Ashfall Protocol" onclick="showTitleDetail('Ashfall Protocol','Action','2026','ashfall-protocol')">ⓘ More Info</button>
     </div>
-  </div>
-</section>
-
-<section class="pricing" id="pricing" aria-labelledby="pricing-heading" style="display:none;">
-  <h2 id="pricing-heading" class="brand-font pricing-title">Plans For Every Screen</h2>
-  <p class="pricing-sub">Cancel anytime. No hidden fees. Prices in PKR, billed monthly.</p>
-  <div class="plans-grid">
-
-    <div class="plan-card" data-plan="Mobile" data-price="200">
-      <h3>Mobile</h3>
-      <p class="plan-price">Rs. 200<span>/mo</span></p>
-      <ul>
-        <li>Watch on phone &amp; tablet</li>
-        <li>480p streaming</li>
-        <li>1 screen at a time</li>
-      </ul>
-      <button class="btn btn-primary subscribe-btn">Subscribe</button>
-    </div>
-
-    <div class="plan-card" data-plan="Basic" data-price="400">
-      <h3>Basic</h3>
-      <p class="plan-price">Rs. 400<span>/mo</span></p>
-      <ul>
-        <li>Watch on any device</li>
-        <li>720p HD streaming</li>
-        <li>1 screen at a time</li>
-      </ul>
-      <button class="btn btn-primary subscribe-btn">Subscribe</button>
-    </div>
-
-    <div class="plan-card featured" data-plan="Standard" data-price="750">
-      <span class="badge">Most Popular</span>
-      <h3>Standard</h3>
-      <p class="plan-price">Rs. 750<span>/mo</span></p>
-      <ul>
-        <li>Watch on any device</li>
-        <li>1080p Full HD streaming</li>
-        <li>2 screens at a time</li>
-      </ul>
-      <button class="btn btn-primary subscribe-btn">Subscribe</button>
-    </div>
-
-    <div class="plan-card" data-plan="Premium" data-price="1050">
-      <h3>Premium</h3>
-      <p class="plan-price">Rs. 1050<span>/mo</span></p>
-      <ul>
-        <li>Watch on any device</li>
-        <li>4K + HDR streaming</li>
-        <li>4 screens at a time</li>
-      </ul>
-      <button class="btn btn-primary subscribe-btn">Subscribe</button>
-    </div>
-
   </div>
 </section>
 
@@ -490,21 +440,56 @@
   </section>
 </main>
 
-<div class="modal-overlay" id="subscribeModal">
-  <div class="modal-box">
-    <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
-    <h3>Subscribe to Velara</h3>
-    <p class="modal-plan-line" id="modalPlanLine">Plan — Rs. 0/mo</p>
-    <form id="subscribeForm">
-      <label for="subEmail">Gmail address</label>
-      <input type="email" id="subEmail" placeholder="you@gmail.com" required />
-      <div class="modal-actions">
-        <button type="submit" class="btn btn-primary">Confirm Subscribe</button>
-      </div>
-      <p class="modal-msg" id="modalMsg"></p>
-    </form>
+<section id="titleDetail" style="display:none; padding:90px 4vw 60px; max-width:900px; margin:0 auto; min-height:60vh;">
+  <button onclick="closeTitleDetail()" style="background:none; border:1px solid rgba(255,255,255,0.2); color:#fff; padding:8px 16px; border-radius:5px; cursor:pointer; margin-bottom:24px;">← Back</button>
+  <div id="titleDetailPlayer" style="width:100%; aspect-ratio:16/9; background:#000; border-radius:8px; overflow:hidden; margin-bottom:20px; display:flex; align-items:center; justify-content:center;"></div>
+  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div>
+      <h1 id="titleDetailName" class="brand-font" style="font-size:2.2rem; margin-bottom:6px;"></h1>
+      <p id="titleDetailMeta" style="color:rgba(255,255,255,0.55);"></p>
+    </div>
+    <button class="btn btn-secondary" id="myListToggleBtn">+ My List</button>
   </div>
-</div>
+  <p style="color:rgba(255,255,255,0.7); line-height:1.6; margin-top:16px; font-size:0.85rem;">Demo title — sample video shown for preview purposes; not the licensed original content.</p>
+</section>
+
+<section id="mylistSection" style="display:none; padding:110px 4vw 60px; max-width:1200px; margin:0 auto; min-height:60vh;">
+  <h1 class="brand-font" style="font-size:2rem; margin-bottom:20px;">My List</h1>
+  <div id="mylistGrid" class="titles-grid"></div>
+</section>
+
+<section class="pricing" id="pricingSection">
+  <h2 class="pricing-title brand-font">Plans For Everyone</h2>
+  <p class="pricing-sub">Cancel anytime. No hidden fees. (Demo checkout — no real charge is made.)</p>
+  <div class="plans-grid">
+    <div class="plan-card" data-plan="Mobile" data-price="200">
+      <h3>Mobile</h3>
+      <div class="plan-price">Rs. 200<span>/mo</span></div>
+      <ul><li>Good video quality</li><li>Watch on phone/tablet</li><li>1 device at a time</li></ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+    <div class="plan-card" data-plan="Basic" data-price="400">
+      <h3>Basic</h3>
+      <div class="plan-price">Rs. 400<span>/mo</span></div>
+      <ul><li>Good video quality</li><li>Watch on any 1 screen</li><li>Downloads on 1 device</li></ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+    <div class="plan-card featured" data-plan="Standard" data-price="800">
+      <span class="badge">Most Popular</span>
+      <h3>Standard</h3>
+      <div class="plan-price">Rs. 800<span>/mo</span></div>
+      <ul><li>Full HD available</li><li>Watch on 2 screens</li><li>Downloads on 2 devices</li></ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+    <div class="plan-card" data-plan="Premium" data-price="1200">
+      <h3>Premium</h3>
+      <div class="plan-price">Rs. 1200<span>/mo</span></div>
+      <ul><li>Ultra HD & HDR</li><li>Watch on 4 screens</li><li>Downloads on 4 devices</li></ul>
+      <button class="btn btn-primary subscribe-btn">Subscribe</button>
+    </div>
+  </div>
+</section>
+
 
 <footer>
   <div class="foot-links">
@@ -573,6 +558,27 @@
     <div id="tableWrap"></div>
 
     <div class="adm-section-head" style="margin-top:44px;">
+      <h2 style="font-size:1.1rem;">Grant Access (Manual Activation)</h2>
+    </div>
+    <div class="stat-card" style="margin-bottom:30px;">
+      <div class="label" style="margin-bottom:12px;">
+        Manually activate any Gmail address as a subscriber — no payment or self-signup needed. They'll be able to log in right away.
+      </div>
+      <form id="grantForm" style="display:flex; gap:10px; flex-wrap:wrap;">
+        <input type="email" id="grantEmail" placeholder="user@gmail.com" style="flex:2; min-width:200px; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15); background:#0a0a0a; color:#fff; font-size:0.9rem;" required />
+        <select id="grantPlan" style="flex:1; min-width:140px; padding:11px 12px; border-radius:5px; border:1px solid rgba(255,255,255,0.15); background:#0a0a0a; color:#fff; font-size:0.9rem;">
+          <option value="Mobile|200">Mobile — Rs. 200</option>
+          <option value="Basic|400">Basic — Rs. 400</option>
+          <option value="Standard|800">Standard — Rs. 800</option>
+          <option value="Premium|1200">Premium — Rs. 1200</option>
+          <option value="Admin (Free Access)|0">Free Access (Rs. 0)</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="padding:11px 20px;">Activate</button>
+      </form>
+      <p class="adm-msg" id="grantMsg"></p>
+    </div>
+
+    <div class="adm-section-head" style="margin-top:44px;">
       <h2 style="font-size:1.1rem;">Content Library</h2>
       <button class="refresh-btn" id="addTitleOpenBtn">+ Add New Title</button>
     </div>
@@ -629,6 +635,72 @@
   </div>
 </div>
 </div>
+
+<!-- ===== Account Auth Modal ===== -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authModalClose" aria-label="Close">✕</button>
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="tabLogin">Sign In</div>
+      <div class="auth-tab" id="tabSignup">Sign Up</div>
+    </div>
+
+    <form id="loginUserForm">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" required />
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" required minlength="4" />
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </div>
+      <p class="modal-msg" id="loginUserMsg"></p>
+    </form>
+
+    <form id="signupUserForm" style="display:none;">
+      <label for="signupName">Name</label>
+      <input type="text" id="signupName" required />
+      <label for="signupEmail">Email</label>
+      <input type="email" id="signupEmail" required />
+      <label for="signupPassword">Password</label>
+      <input type="password" id="signupPassword" required minlength="4" />
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </div>
+      <p class="modal-msg" id="signupUserMsg"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ===== Checkout Modal ===== -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal-box">
+    <button class="modal-close" id="checkoutModalClose" aria-label="Close">✕</button>
+    <h3 id="checkoutPlanName">Subscribe</h3>
+    <p class="modal-plan-line" id="checkoutPlanLine"></p>
+    <form id="checkoutForm">
+      <label for="ccName">Name on Card</label>
+      <input type="text" id="ccName" required />
+      <label for="ccNumber">Card Number</label>
+      <input type="text" id="ccNumber" placeholder="4242 4242 4242 4242" maxlength="19" required />
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+          <label for="ccExpiry">Expiry (MM/YY)</label>
+          <input type="text" id="ccExpiry" placeholder="MM/YY" maxlength="5" required />
+        </div>
+        <div style="flex:1;">
+          <label for="ccCvv">CVV</label>
+          <input type="text" id="ccCvv" placeholder="123" maxlength="4" required />
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Pay &amp; Subscribe</button>
+      </div>
+      <p class="modal-msg" id="checkoutMsg"></p>
+      <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:8px;">Demo checkout — card details are validated for format only and are never stored or sent anywhere. No real charge is made.</p>
+    </form>
+  </div>
+</div>
+
 <script>
   // ===== Storage polyfill: window.storage only exists inside Claude.ai artifacts.
   // On a real deployed site (like Vercel) it's undefined, so we fall back to
@@ -671,32 +743,6 @@
     else { nav.classList.remove('scrolled'); }
   });
 
-  // ===== Subscribe modal + shared storage =====
-  var modal = document.getElementById('subscribeModal');
-  var modalPlanLine = document.getElementById('modalPlanLine');
-  var modalMsg = document.getElementById('modalMsg');
-  var subscribeForm = document.getElementById('subscribeForm');
-  var currentPlan = null;
-
-  document.querySelectorAll('.subscribe-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.plan-card');
-      currentPlan = { name: card.dataset.plan, price: card.dataset.price };
-      modalPlanLine.textContent = currentPlan.name + ' — Rs. ' + currentPlan.price + '/mo';
-      modalMsg.textContent = '';
-      modalMsg.className = 'modal-msg';
-      document.getElementById('subEmail').value = '';
-      modal.classList.add('open');
-    });
-  });
-
-  document.getElementById('modalCloseBtn').addEventListener('click', function () {
-    modal.classList.remove('open');
-  });
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) modal.classList.remove('open');
-  });
-
   // ===== Load admin-added New Releases =====
   async function loadNewReleases() {
     var section = document.getElementById('newReleasesSection');
@@ -727,7 +773,7 @@
 
     section.style.display = 'block';
   }
-  loadNewReleases();
+  loadNewReleases().then(function () { if (window.wireCardClicks) window.wireCardClicks(); });
 
   // ===== Live TMDB Trending Movies =====
   async function loadTmdbTrending() {
@@ -767,120 +813,6 @@
   }
   loadTmdbTrending();
 
-  // ===== Login (checks subscriber records) =====
-  var loginNavBtn = document.getElementById('loginNavBtn');
-  var navAvatar = document.getElementById('navAvatar');
-  var loginModal = document.getElementById('loginModal');
-  var loginModalMsg = document.getElementById('loginModalMsg');
-  var loginModalForm = document.getElementById('loginModalForm');
-  var loggedInUser = null;
-
-  loginNavBtn.addEventListener('click', function () {
-    loginModalMsg.textContent = '';
-    loginModalMsg.className = 'modal-msg';
-    document.getElementById('loginEmail').value = '';
-    loginModal.classList.add('open');
-  });
-  document.getElementById('loginModalCloseBtn').addEventListener('click', function () {
-    loginModal.classList.remove('open');
-  });
-  loginModal.addEventListener('click', function (e) {
-    if (e.target === loginModal) loginModal.classList.remove('open');
-  });
-
-  loginModalForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var email = document.getElementById('loginEmail').value.trim().toLowerCase();
-    loginModalMsg.textContent = 'Checking...';
-    loginModalMsg.className = 'modal-msg';
-
-    if (email === ADMIN_EMAIL) {
-      loggedInUser = { email: email, plan: 'Admin (Free Access)', price: 0, subscribedAt: new Date().toISOString() };
-      loginNavBtn.style.display = 'none';
-      navAvatar.style.display = 'flex';
-      navAvatar.textContent = email.charAt(0).toUpperCase();
-      navAvatar.title = email + ' (Admin — full free access) — click to log out';
-      loginModalMsg.textContent = 'Welcome back, Admin! Full access unlocked.';
-      loginModalMsg.className = 'modal-msg success';
-      setTimeout(function () { loginModal.classList.remove('open'); }, 1200);
-      return;
-    }
-
-    try {
-      var r = await window.storage.get('subscriber:' + email, true);
-      if (r && r.value) {
-        var record = JSON.parse(r.value);
-        loggedInUser = record;
-        loginNavBtn.style.display = 'none';
-        navAvatar.style.display = 'flex';
-        navAvatar.textContent = email.charAt(0).toUpperCase();
-        navAvatar.title = email + ' (' + record.plan + ' plan) — click to log out';
-        loginModalMsg.textContent = 'Welcome back! Logged in on ' + record.plan + ' plan.';
-        loginModalMsg.className = 'modal-msg success';
-        setTimeout(function () { loginModal.classList.remove('open'); }, 1200);
-      } else {
-        loginModalMsg.textContent = 'No subscription found for this Gmail. Please subscribe first.';
-        loginModalMsg.className = 'modal-msg error';
-      }
-    } catch (err) {
-      loginModalMsg.textContent = 'No subscription found for this Gmail. Please subscribe first.';
-      loginModalMsg.className = 'modal-msg error';
-    }
-  });
-
-  navAvatar.addEventListener('click', function () {
-    loggedInUser = null;
-    navAvatar.style.display = 'none';
-    loginNavBtn.style.display = 'inline-block';
-  });
-
-  subscribeForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var email = document.getElementById('subEmail').value.trim().toLowerCase();
-    if (!email.endsWith('@gmail.com')) {
-      modalMsg.textContent = 'Please use a Gmail address to subscribe.';
-      modalMsg.className = 'modal-msg error';
-      return;
-    }
-    modalMsg.textContent = 'Processing...';
-    modalMsg.className = 'modal-msg';
-
-    try {
-      var record = {
-        email: email,
-        plan: currentPlan.name,
-        price: currentPlan.price,
-        subscribedAt: new Date().toISOString()
-      };
-      // Save individual subscriber record (shared so admin panel can read it)
-      await window.storage.set('subscriber:' + email, JSON.stringify(record), true);
-
-      // Maintain an index of all subscriber emails
-      var indexResult = null;
-      try {
-        indexResult = await window.storage.get('subscriber-index', true);
-      } catch (err) {
-        indexResult = null;
-      }
-      var emails = [];
-      if (indexResult && indexResult.value) {
-        emails = JSON.parse(indexResult.value);
-      }
-      if (emails.indexOf(email) === -1) {
-        emails.push(email);
-      }
-      await window.storage.set('subscriber-index', JSON.stringify(emails), true);
-
-      modalMsg.textContent = 'Subscribed! Welcome to Velara ' + currentPlan.name + '.';
-      modalMsg.className = 'modal-msg success';
-      setTimeout(function () { modal.classList.remove('open'); }, 1800);
-    } catch (err) {
-      modalMsg.textContent = 'Something went wrong. Please try again.';
-      modalMsg.className = 'modal-msg error';
-    }
-  });
-
-
   // ===== Admin Panel (merged single-file) =====
 
   var ADMIN_EMAIL = 'qasimraza7881@gmail.com';
@@ -916,6 +848,58 @@
   document.getElementById('refreshBtn').addEventListener('click', function () {
     loadDashboard();
     loadTitles();
+  });
+
+  // ===== Manual "Grant Access" activation =====
+  document.getElementById('grantForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var grantMsg = document.getElementById('grantMsg');
+    var email = document.getElementById('grantEmail').value.trim().toLowerCase();
+    var selected = document.getElementById('grantPlan').value.split('|');
+    var planName = selected[0];
+    var planPrice = Number(selected[1]);
+
+    if (!email.endsWith('@gmail.com')) {
+      grantMsg.textContent = 'Please enter a valid Gmail address.';
+      grantMsg.className = 'adm-msg error';
+      return;
+    }
+
+    grantMsg.textContent = 'Activating...';
+    grantMsg.className = 'adm-msg';
+
+    try {
+      var record = {
+        email: email,
+        plan: planName,
+        price: planPrice,
+        subscribedAt: new Date().toISOString()
+      };
+      await window.storage.set('subscriber:' + email, JSON.stringify(record), true);
+
+      var indexResult = null;
+      try {
+        indexResult = await window.storage.get('subscriber-index', true);
+      } catch (err) {
+        indexResult = null;
+      }
+      var emails = [];
+      if (indexResult && indexResult.value) {
+        emails = JSON.parse(indexResult.value);
+      }
+      if (emails.indexOf(email) === -1) {
+        emails.push(email);
+      }
+      await window.storage.set('subscriber-index', JSON.stringify(emails), true);
+
+      grantMsg.textContent = email + ' activated on ' + planName + ' plan. They can log in now.';
+      grantMsg.className = 'adm-msg success';
+      document.getElementById('grantEmail').value = '';
+      loadDashboard();
+    } catch (err) {
+      grantMsg.textContent = 'Something went wrong. Please try again.';
+      grantMsg.className = 'adm-msg error';
+    }
   });
 
   async function loadDashboard() {
@@ -1029,6 +1013,7 @@
       titleModalMsg.textContent = 'Published! Now live on the site.';
       titleModalMsg.className = 'adm-msg success';
       loadTitles();
+      if (typeof loadNewReleases === 'function') loadNewReleases();
       setTimeout(function () { titleModal.classList.remove('open'); }, 1200);
     } catch (err) {
       titleModalMsg.textContent = 'Something went wrong. Please try again.';
@@ -1110,28 +1095,366 @@
   }
 
 
-  function showAdmin() {
-    document.getElementById('adminApp').style.display = 'block';
-    document.querySelector('header.site-nav').style.display = 'none';
+  function hideAllSections() {
+    document.getElementById('adminApp').style.display = 'none';
     document.querySelector('.hero').style.display = 'none';
-    document.getElementById('pricing').style.display = 'none';
     document.querySelector('main').style.display = 'none';
+    document.getElementById('titleDetail').style.display = 'none';
+    document.getElementById('mylistSection').style.display = 'none';
+    document.getElementById('pricingSection').style.display = 'none';
+  }
+  function showAdmin() {
+    hideAllSections();
+    document.querySelector('header.site-nav').style.display = 'none';
     document.querySelector('footer').style.display = 'none';
+    document.getElementById('adminApp').style.display = 'block';
     window.scrollTo(0, 0);
   }
   function showSite() {
-    document.getElementById('adminApp').style.display = 'none';
+    hideAllSections();
     document.querySelector('header.site-nav').style.display = 'flex';
-    document.querySelector('.hero').style.display = 'flex';
-    document.getElementById('pricing').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
     document.querySelector('footer').style.display = 'block';
+    document.querySelector('.hero').style.display = 'flex';
+    document.querySelector('main').style.display = 'block';
+    document.getElementById('pricingSection').style.display = 'block';
+    window.scrollTo(0, 0);
   }
+  async function showMyListPage() {
+    hideAllSections();
+    document.querySelector('header.site-nav').style.display = 'flex';
+    document.querySelector('footer').style.display = 'block';
+    document.getElementById('mylistSection').style.display = 'block';
+    var session = getSession();
+    var grid = document.getElementById('mylistGrid');
+    if (!session) {
+      grid.innerHTML = '<div class="empty-state">Sign in to build your list.</div>';
+      window.scrollTo(0, 0);
+      return;
+    }
+    var items = await getMyList(session.email);
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty-state">Nothing here yet. Add titles from any title page.</div>';
+    } else {
+      grid.innerHTML = items.map(function (it) {
+        return '<div class="title-card" style="background:linear-gradient(135deg,#3a0d05,#150502);cursor:pointer;" onclick="showTitleDetail(\'' + it.name.replace(/'/g, "\\'") + '\',\'' + it.genre + '\',\'' + it.year + '\',\'' + it.slug + '\')"><h4>' + it.name + '</h4><span>' + it.genre + ' • ' + it.year + '</span></div>';
+      }).join('');
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // ===== Demo video catalogue (royalty-free / Creative Commons sample films) =====
+  var DEMO_VIDEOS = [
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4'
+  ];
+  function videoForSlug(slug) {
+    slug = slug || 'default';
+    var hash = 0;
+    for (var i = 0; i < slug.length; i++) { hash = (hash * 31 + slug.charCodeAt(i)) >>> 0; }
+    return DEMO_VIDEOS[hash % DEMO_VIDEOS.length];
+  }
+
+  // ===== Session (device-local; not shared storage) =====
+  function getSession() {
+    try { return JSON.parse(localStorage.getItem('velara-session') || 'null'); } catch (e) { return null; }
+  }
+  function setSession(email, name) {
+    localStorage.setItem('velara-session', JSON.stringify({ email: email, name: name || email }));
+  }
+  function clearSession() { localStorage.removeItem('velara-session'); }
+
+  // ===== User accounts (shared storage acts as the "database") =====
+  async function findUser(email) {
+    try {
+      var r = await window.storage.get('user:' + email, true);
+      return r && r.value ? JSON.parse(r.value) : null;
+    } catch (e) { return null; }
+  }
+  async function createUser(name, email, password) {
+    var existing = await findUser(email);
+    if (existing) throw new Error('An account with this email already exists.');
+    var record = { name: name, email: email, password: password, createdAt: new Date().toISOString() };
+    await window.storage.set('user:' + email, JSON.stringify(record), true);
+    var idx = [];
+    try { var ir = await window.storage.get('users-index', true); if (ir && ir.value) idx = JSON.parse(ir.value); } catch (e) {}
+    if (idx.indexOf(email) === -1) idx.push(email);
+    await window.storage.set('users-index', JSON.stringify(idx), true);
+    return record;
+  }
+
+  // ===== Subscription state (reuses the same subscriber:* records the admin panel manages) =====
+  async function getSubscription(email) {
+    try {
+      var r = await window.storage.get('subscriber:' + email, true);
+      return r && r.value ? JSON.parse(r.value) : null;
+    } catch (e) { return null; }
+  }
+  async function saveSubscription(email, plan, price) {
+    var record = { email: email, plan: plan, price: price, subscribedAt: new Date().toISOString() };
+    await window.storage.set('subscriber:' + email, JSON.stringify(record), true);
+    var idx = [];
+    try { var ir = await window.storage.get('subscriber-index', true); if (ir && ir.value) idx = JSON.parse(ir.value); } catch (e) {}
+    if (idx.indexOf(email) === -1) idx.push(email);
+    await window.storage.set('subscriber-index', JSON.stringify(idx), true);
+  }
+
+  // ===== My List =====
+  async function getMyList(email) {
+    try {
+      var r = await window.storage.get('mylist:' + email, true);
+      return r && r.value ? JSON.parse(r.value) : [];
+    } catch (e) { return []; }
+  }
+  async function toggleMyList(email, item) {
+    var list = await getMyList(email);
+    var i = list.findIndex(function (x) { return x.slug === item.slug; });
+    var nowIn;
+    if (i === -1) { list.push(item); nowIn = true; } else { list.splice(i, 1); nowIn = false; }
+    await window.storage.set('mylist:' + email, JSON.stringify(list), true);
+    return nowIn;
+  }
+
+  // ===== Nav account area =====
+  async function renderAuthArea() {
+    var el = document.getElementById('authArea');
+    var session = getSession();
+    if (!session) {
+      el.innerHTML = '<button class="nav-signin-btn" id="navSignInBtn">Sign In</button>';
+      document.getElementById('navSignInBtn').addEventListener('click', function () { openAuthModal('login'); });
+      return;
+    }
+    var initial = (session.name || session.email).charAt(0).toUpperCase();
+    el.innerHTML =
+      '<button class="nav-avatar-btn" id="navAvatarBtn">' + initial + '</button>' +
+      '<div class="account-dropdown" id="navDropdown">' +
+        '<div class="acc-email">' + session.email + '</div>' +
+        '<a href="#mylist">My List</a>' +
+        '<button id="navLogoutBtn">Log out</button>' +
+      '</div>';
+    document.getElementById('navAvatarBtn').addEventListener('click', function (e) {
+      e.stopPropagation();
+      document.getElementById('navDropdown').classList.toggle('open');
+    });
+    document.getElementById('navLogoutBtn').addEventListener('click', function () {
+      clearSession();
+      renderAuthArea();
+      showSite();
+    });
+    document.addEventListener('click', function closeDrop(e) {
+      var dd = document.getElementById('navDropdown');
+      if (dd && !dd.contains(e.target) && e.target.id !== 'navAvatarBtn') dd.classList.remove('open');
+    });
+  }
+
+  // ===== Auth modal =====
+  var authModal = document.getElementById('authModal');
+  var pendingPlan = null; // { plan, price } set when user hit Subscribe while logged out
+  function openAuthModal(mode) {
+    document.getElementById('loginUserForm').style.display = mode === 'signup' ? 'none' : 'block';
+    document.getElementById('signupUserForm').style.display = mode === 'signup' ? 'block' : 'none';
+    document.getElementById('tabLogin').classList.toggle('active', mode !== 'signup');
+    document.getElementById('tabSignup').classList.toggle('active', mode === 'signup');
+    document.getElementById('loginUserMsg').textContent = '';
+    document.getElementById('signupUserMsg').textContent = '';
+    authModal.classList.add('open');
+  }
+  document.getElementById('authModalClose').addEventListener('click', function () { authModal.classList.remove('open'); });
+  authModal.addEventListener('click', function (e) { if (e.target === authModal) authModal.classList.remove('open'); });
+  document.getElementById('tabLogin').addEventListener('click', function () { openAuthModal('login'); });
+  document.getElementById('tabSignup').addEventListener('click', function () { openAuthModal('signup'); });
+
+  document.getElementById('loginUserForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var msg = document.getElementById('loginUserMsg');
+    var email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    var password = document.getElementById('loginPassword').value;
+    msg.textContent = 'Signing in...'; msg.className = 'modal-msg';
+    try {
+      var user = await findUser(email);
+      if (!user || user.password !== password) throw new Error('Invalid email or password.');
+      setSession(user.email, user.name);
+      await renderAuthArea();
+      authModal.classList.remove('open');
+      await afterAuthSuccess();
+    } catch (err) {
+      msg.textContent = err.message; msg.className = 'modal-msg error';
+    }
+  });
+
+  document.getElementById('signupUserForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var msg = document.getElementById('signupUserMsg');
+    var name = document.getElementById('signupName').value.trim();
+    var email = document.getElementById('signupEmail').value.trim().toLowerCase();
+    var password = document.getElementById('signupPassword').value;
+    msg.textContent = 'Creating account...'; msg.className = 'modal-msg';
+    try {
+      await createUser(name, email, password);
+      setSession(email, name);
+      await renderAuthArea();
+      authModal.classList.remove('open');
+      await afterAuthSuccess();
+    } catch (err) {
+      msg.textContent = err.message; msg.className = 'modal-msg error';
+    }
+  });
+
+  async function afterAuthSuccess() {
+    if (pendingPlan) {
+      var p = pendingPlan; pendingPlan = null;
+      openCheckoutModal(p.plan, p.price);
+    }
+  }
+
+  // ===== Checkout modal =====
+  var checkoutModal = document.getElementById('checkoutModal');
+  var checkoutContext = null;
+  function openCheckoutModal(plan, price) {
+    checkoutContext = { plan: plan, price: price };
+    document.getElementById('checkoutPlanName').textContent = 'Subscribe — ' + plan;
+    document.getElementById('checkoutPlanLine').textContent = 'Rs. ' + price + ' / month';
+    document.getElementById('checkoutMsg').textContent = '';
+    document.getElementById('checkoutForm').reset();
+    checkoutModal.classList.add('open');
+  }
+  document.getElementById('checkoutModalClose').addEventListener('click', function () { checkoutModal.classList.remove('open'); });
+  checkoutModal.addEventListener('click', function (e) { if (e.target === checkoutModal) checkoutModal.classList.remove('open'); });
+
+  document.getElementById('ccNumber').addEventListener('input', function (e) {
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
+  });
+  document.getElementById('ccExpiry').addEventListener('input', function (e) {
+    var v = e.target.value.replace(/\D/g, '').slice(0, 4);
+    if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
+    e.target.value = v;
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var msg = document.getElementById('checkoutMsg');
+    var cardDigits = document.getElementById('ccNumber').value.replace(/\s/g, '');
+    var expiry = document.getElementById('ccExpiry').value;
+    var cvv = document.getElementById('ccCvv').value;
+    if (cardDigits.length < 15) { msg.textContent = 'Enter a valid card number.'; msg.className = 'modal-msg error'; return; }
+    var em = /^(\d{2})\/(\d{2})$/.exec(expiry);
+    if (!em) { msg.textContent = 'Enter expiry as MM/YY.'; msg.className = 'modal-msg error'; return; }
+    if (cvv.length < 3) { msg.textContent = 'Enter a valid CVV.'; msg.className = 'modal-msg error'; return; }
+
+    var session = getSession();
+    if (!session) { msg.textContent = 'Please sign in first.'; msg.className = 'modal-msg error'; return; }
+
+    msg.textContent = 'Processing payment...'; msg.className = 'modal-msg';
+    try {
+      await new Promise(function (res) { setTimeout(res, 700); }); // simulated processing delay
+      await saveSubscription(session.email, checkoutContext.plan, checkoutContext.price);
+      msg.textContent = 'Payment successful! You are now subscribed to ' + checkoutContext.plan + '.';
+      msg.className = 'modal-msg success';
+      setTimeout(function () { checkoutModal.classList.remove('open'); }, 1300);
+    } catch (err) {
+      msg.textContent = 'Something went wrong. Please try again.'; msg.className = 'modal-msg error';
+    }
+  });
+
+  document.querySelectorAll('.subscribe-btn').forEach(function (btn) {
+    btn.addEventListener('click', async function () {
+      var card = btn.closest('.plan-card');
+      var plan = card.dataset.plan, price = Number(card.dataset.price);
+      var session = getSession();
+      if (!session) { pendingPlan = { plan: plan, price: price }; openAuthModal('login'); return; }
+      openCheckoutModal(plan, price);
+    });
+  });
+
+  // ===== Title detail / paywalled player =====
+  var currentTitle = null;
+  function closeTitleDetail() { window.location.hash = ''; showSite(); }
+
+  async function showTitleDetail(name, genre, year, slug) {
+    slug = slug || name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    currentTitle = { name: name, genre: genre, year: year, slug: slug };
+    hideAllSections();
+    document.querySelector('header.site-nav').style.display = 'flex';
+    document.querySelector('footer').style.display = 'block';
+    var detail = document.getElementById('titleDetail');
+    detail.style.display = 'block';
+    document.getElementById('titleDetailName').textContent = name;
+    document.getElementById('titleDetailMeta').textContent = genre + ' • ' + year;
+
+    var session = getSession();
+    var playerEl = document.getElementById('titleDetailPlayer');
+    var sub = session ? await getSubscription(session.email) : null;
+
+    if (session && sub) {
+      playerEl.innerHTML = '<video controls autoplay style="width:100%; height:100%;" src="' + videoForSlug(slug) + '"></video>';
+    } else {
+      playerEl.innerHTML =
+        '<div class="paywall-box">' +
+          '<p>' + (session ? 'Subscribe to a plan to watch ' + name + '.' : 'Sign in and subscribe to watch ' + name + '.') + '</p>' +
+          '<button class="btn btn-primary" id="paywallCta">' + (session ? 'View Plans' : 'Sign In') + '</button>' +
+        '</div>';
+      document.getElementById('paywallCta').addEventListener('click', function () {
+        if (!session) { openAuthModal('login'); }
+        else { closeTitleDetail(); document.getElementById('pricingSection').scrollIntoView({ behavior: 'smooth' }); }
+      });
+    }
+
+    // My List toggle button
+    var listBtn = document.getElementById('myListToggleBtn');
+    if (session) {
+      var list = await getMyList(session.email);
+      var inList = list.some(function (x) { return x.slug === slug; });
+      listBtn.textContent = inList ? '✓ In My List' : '+ My List';
+      listBtn.onclick = async function () {
+        var nowIn = await toggleMyList(session.email, currentTitle);
+        listBtn.textContent = nowIn ? '✓ In My List' : '+ My List';
+      };
+    } else {
+      listBtn.textContent = '+ My List';
+      listBtn.onclick = function () { openAuthModal('login'); };
+    }
+    window.scrollTo(0, 0);
+  }
+
+  function wireCardClicks() {
+    document.querySelectorAll('a.card').forEach(function (card) {
+      if (card.dataset.wired) return;
+      card.dataset.wired = '1';
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        var h3 = card.querySelector('h3');
+        var name = h3.childNodes[0].textContent.trim();
+        var meta = card.querySelector('span') ? card.querySelector('span').textContent.split(' • ') : ['', ''];
+        var slug = (card.getAttribute('href') || '').replace('/title/', '');
+        window.location.hash = '';
+        showTitleDetail(name, meta[0] || '', meta[1] || '', slug);
+      });
+    });
+  }
+  wireCardClicks();
+  // re-wire whenever admin-published titles get injected into the DOM
+  var origLoadNewReleases = loadNewReleases;
+  loadNewReleases = function () { return origLoadNewReleases().then(wireCardClicks); };
+
+  document.getElementById('myListNavLink').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.hash = '#mylist';
+  });
+
   function routeCheck() {
     if (window.location.hash === '#admin') { showAdmin(); }
+    else if (window.location.hash === '#mylist') { showMyListPage(); }
     else { showSite(); }
   }
   window.addEventListener('hashchange', routeCheck);
+  renderAuthArea();
   routeCheck();
 </script>
 </body>
