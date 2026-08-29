@@ -210,7 +210,61 @@
   @media (max-width: 700px) {
     nav.main-nav { display: none; }
     .card { width: 150px; }
+    body { padding-bottom: 64px; }
   }
+
+  /* ===== Mobile Bottom Tab Bar ===== */
+  .bottom-tabbar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+    background: rgba(10,10,10,0.97); backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 2px calc(6px + env(safe-area-inset-bottom));
+  }
+  .bottom-tabbar-inner { display: flex; justify-content: space-around; align-items: center; }
+  .tab-item {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    background: none; border: none; color: rgba(255,255,255,0.55); cursor: pointer;
+    font-size: 0.62rem; font-weight: 600; padding: 4px 8px; flex: 1; text-decoration: none;
+  }
+  .tab-item .tab-icon { font-size: 1.25rem; line-height: 1; }
+  .tab-item.active { color: var(--accent); }
+  @media (max-width: 700px) {
+    .bottom-tabbar { display: block; }
+  }
+
+  /* ===== Settings Modal ===== */
+  .settings-section { margin-bottom: 20px; }
+  .settings-section h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.45); margin-bottom: 10px;
+  }
+  .settings-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.9rem;
+  }
+  .settings-row:first-of-type { border-top: none; }
+  .settings-row .settings-label { color: rgba(255,255,255,0.9); }
+  .settings-row .settings-sub { display:block; color: rgba(255,255,255,0.45); font-size: 0.75rem; margin-top: 2px; }
+  .settings-row a, .settings-row button.settings-link {
+    background:none; border:none; color: rgba(255,255,255,0.6); font-size: 0.85rem; cursor: pointer; text-decoration: none;
+  }
+  .settings-row a:hover, .settings-row button.settings-link:hover { color: #fff; }
+  .toggle-switch {
+    position: relative; width: 42px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 999px; border: none; cursor: pointer; transition: background 0.2s ease;
+  }
+  .toggle-switch.on { background: var(--accent); }
+  .toggle-switch .knob {
+    position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%;
+    background: #fff; transition: transform 0.2s ease;
+  }
+  .toggle-switch.on .knob { transform: translateX(18px); }
+  .settings-logout-btn {
+    width: 100%; padding: 12px; border-radius: 6px; border: 1px solid rgba(248,113,113,0.4);
+    background: rgba(248,113,113,0.1); color: #f87171; font-weight: 600; font-size: 0.9rem; cursor: pointer; margin-top: 8px;
+  }
+  .settings-logout-btn:hover { background: rgba(248,113,113,0.18); }
 
   /* ===== Auth / Checkout ===== */
   .nav-signin-btn { background: var(--accent); border:none; color:#fff; font-weight:600; padding:8px 18px; border-radius:4px; font-size:0.85rem; cursor:pointer; }
@@ -569,6 +623,71 @@
   </div>
 </section>
 
+
+<!-- ===== Mobile Bottom Tab Bar ===== -->
+<nav class="bottom-tabbar" id="bottomTabbar" aria-label="Primary">
+  <div class="bottom-tabbar-inner">
+    <a href="/" class="tab-item active" id="tabHome">
+      <span class="tab-icon">🏠</span><span>Home</span>
+    </a>
+    <button type="button" class="tab-item" id="tabSearch">
+      <span class="tab-icon">🔍</span><span>Search</span>
+    </button>
+    <button type="button" class="tab-item" id="tabMyList">
+      <span class="tab-icon">📑</span><span>My List</span>
+    </button>
+    <button type="button" class="tab-item" id="tabNotifications">
+      <span class="tab-icon">🔔</span><span>Alerts</span>
+    </button>
+    <button type="button" class="tab-item" id="tabSettings">
+      <span class="tab-icon">⚙️</span><span>Settings</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== Settings Modal ===== -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal-box" style="max-width:420px;">
+    <button class="modal-close" id="settingsModalClose" aria-label="Close">✕</button>
+    <h3>Settings</h3>
+    <p class="modal-plan-line" id="settingsAccountLine">Not signed in</p>
+
+    <div class="settings-section">
+      <h4>Account</h4>
+      <div class="settings-row" id="settingsSignInRow" style="display:none;">
+        <span class="settings-label">Sign in or create an account</span>
+        <button type="button" class="settings-link" id="settingsSignInBtn">Sign In</button>
+      </div>
+      <div class="settings-row" id="settingsPlanRow" style="display:none;">
+        <span class="settings-label">Subscription<span class="settings-sub" id="settingsPlanSub">No active plan</span></span>
+        <a href="#pricing" id="settingsManagePlan">Manage</a>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h4>Preferences</h4>
+      <div class="settings-row">
+        <span class="settings-label">Push Notifications<span class="settings-sub">Get alerts about new releases</span></span>
+        <button type="button" class="toggle-switch on" id="settingsNotifToggle" aria-label="Toggle notifications"><span class="knob"></span></button>
+      </div>
+      <div class="settings-row">
+        <span class="settings-label">Autoplay Previews<span class="settings-sub">Play trailers automatically</span></span>
+        <button type="button" class="toggle-switch on" id="settingsAutoplayToggle" aria-label="Toggle autoplay"><span class="knob"></span></button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h4>General</h4>
+      <div class="settings-row"><span class="settings-label">About Us</span><a href="/about">Open</a></div>
+      <div class="settings-row"><span class="settings-label">Contact</span><a href="/contact">Open</a></div>
+      <div class="settings-row"><span class="settings-label">Privacy Policy</span><a href="/privacy">Open</a></div>
+      <div class="settings-row"><span class="settings-label">Terms of Service</span><a href="/terms">Open</a></div>
+      <div class="settings-row"><span class="settings-label">FAQ</span><a href="/faq">Open</a></div>
+    </div>
+
+    <button type="button" class="settings-logout-btn" id="settingsLogoutBtn" style="display:none;">Log Out</button>
+  </div>
+</div>
 
 <footer>
   <div class="foot-links">
@@ -1371,7 +1490,104 @@
     return nowIn;
   }
 
-  // ===== Nav account area =====
+  // ===== Mobile Bottom Tab Bar =====
+  document.getElementById('tabSearch').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var s = document.querySelector('[aria-label="Search"]');
+    if (s) s.click();
+  });
+  document.getElementById('tabMyList').addEventListener('click', function () {
+    var target = document.getElementById('mylist') || document.querySelector('[id*="mylist" i]');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    else window.location.hash = 'mylist';
+  });
+  document.getElementById('tabNotifications').addEventListener('click', function () {
+    var b = document.querySelector('[aria-label="Notifications"]');
+    if (b) b.click();
+  });
+  document.getElementById('tabSettings').addEventListener('click', function () { openSettingsModal(); });
+  document.getElementById('tabHome').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveTab('tabHome');
+  });
+  function setActiveTab(id) {
+    document.querySelectorAll('.tab-item').forEach(function (el) { el.classList.remove('active'); });
+    var el = document.getElementById(id);
+    if (el) el.classList.add('active');
+  }
+
+  // ===== Settings Modal =====
+  var settingsModal = document.getElementById('settingsModal');
+  var NOTIF_KEY = 'velaraNotifPref';
+  var AUTOPLAY_KEY = 'velaraAutoplayPref';
+  var notifPref = { on: true };
+  var autoplayPref = { on: true };
+
+  async function openSettingsModal() {
+    setActiveTab('tabSettings');
+    var session = getSession();
+    var accLine = document.getElementById('settingsAccountLine');
+    var signInRow = document.getElementById('settingsSignInRow');
+    var planRow = document.getElementById('settingsPlanRow');
+    var logoutBtn = document.getElementById('settingsLogoutBtn');
+    if (session) {
+      accLine.textContent = 'Signed in as ' + session.email;
+      signInRow.style.display = 'none';
+      planRow.style.display = 'flex';
+      logoutBtn.style.display = 'block';
+      try {
+        var sub = await getSubscription(session.email);
+        document.getElementById('settingsPlanSub').textContent = sub ? (sub.plan + ' — Rs. ' + sub.price + '/mo') : 'No active plan';
+      } catch (e) {
+        document.getElementById('settingsPlanSub').textContent = 'No active plan';
+      }
+    } else {
+      accLine.textContent = 'Not signed in';
+      signInRow.style.display = 'flex';
+      planRow.style.display = 'none';
+      logoutBtn.style.display = 'none';
+    }
+    document.getElementById('settingsNotifToggle').classList.toggle('on', notifPref.on);
+    document.getElementById('settingsAutoplayToggle').classList.toggle('on', autoplayPref.on);
+    settingsModal.classList.add('open');
+  }
+  document.getElementById('settingsModalClose').addEventListener('click', function () {
+    settingsModal.classList.remove('open');
+    setActiveTab('tabHome');
+  });
+  settingsModal.addEventListener('click', function (e) {
+    if (e.target === settingsModal) { settingsModal.classList.remove('open'); setActiveTab('tabHome'); }
+  });
+  document.getElementById('settingsSignInBtn').addEventListener('click', function () {
+    settingsModal.classList.remove('open');
+    openAuthModal('login');
+  });
+  document.getElementById('settingsNotifToggle').addEventListener('click', function () {
+    notifPref.on = !notifPref.on;
+    this.classList.toggle('on', notifPref.on);
+    try { localStorage.setItem(NOTIF_KEY, notifPref.on ? '1' : '0'); } catch (e) {}
+  });
+  document.getElementById('settingsAutoplayToggle').addEventListener('click', function () {
+    autoplayPref.on = !autoplayPref.on;
+    this.classList.toggle('on', autoplayPref.on);
+    try { localStorage.setItem(AUTOPLAY_KEY, autoplayPref.on ? '1' : '0'); } catch (e) {}
+  });
+  document.getElementById('settingsLogoutBtn').addEventListener('click', async function () {
+    clearSession();
+    await renderAuthArea();
+    settingsModal.classList.remove('open');
+    setActiveTab('tabHome');
+    showSite();
+  });
+  try {
+    var storedNotif = localStorage.getItem(NOTIF_KEY);
+    var storedAutoplay = localStorage.getItem(AUTOPLAY_KEY);
+    if (storedNotif !== null) notifPref.on = storedNotif === '1';
+    if (storedAutoplay !== null) autoplayPref.on = storedAutoplay === '1';
+  } catch (e) {}
+
+
   async function renderAuthArea() {
     var el = document.getElementById('authArea');
     var session = getSession();
